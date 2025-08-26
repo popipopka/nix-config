@@ -17,7 +17,7 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, quickshell, ... }@inputs:
+  outputs = { nixpkgs, home-manager, quickshell, stylix, ... }@inputs:
     let
       system = "x86_64-linux";
       host = "nix";
@@ -36,6 +36,7 @@
           };
           modules = [
             ./profiles/amd
+            stylix.nixosModules.stylix
           ];
         };
 
@@ -49,6 +50,7 @@
           };
           modules = [
             ./profiles/nvidia
+            stylix.nixosModules.stylix
           ];
         };
 
@@ -62,6 +64,7 @@
           };
           modules = [
             ./profiles/nvidia-laptop
+            stylix.nixosModules.stylix
           ];
         };
 
@@ -75,6 +78,7 @@
           };
           modules = [
             ./profiles/intel
+            stylix.nixosModules.stylix
           ];
         };
 
@@ -88,6 +92,7 @@
           };
           modules = [
             ./profiles/vm
+            stylix.nixosModules.stylix
           ];
         };
       };

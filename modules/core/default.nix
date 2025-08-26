@@ -10,6 +10,7 @@
     ./packages.nix
     ./printing.nix
     ./quickshell.nix
+    ./sddm.nix
     ./security.nix
     ./services.nix
     ./stylix.nix

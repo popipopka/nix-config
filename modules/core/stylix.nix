@@ -11,7 +11,8 @@ in
     opacity.terminal = 1.0;
 
     cursor = {
-      package = pkgs.apple-cursor;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
       size = 22;
     };
 

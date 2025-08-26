@@ -1,4 +1,3 @@
-{ ... }:
 {
   # Git Configuration ( For Pulling Software Repos )
   gitUsername = "popipopka";
@@ -15,16 +14,13 @@
 
   # Program Options
   keyboardLayout = "us,ru";
-  consoleKeyMap = "us";
+#  consoleKeyMap = "us";
 
   # Enable NFS
 #  enableNFS = true;
 
   # Enable Printing Support
-  printEnable = false;
-
-  # Enable Thunar GUI File Manager
-  thunarEnable = true;
+  printEnable = true;
 
   # Set Stylix Image
   # This will set your color palette

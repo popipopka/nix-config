@@ -1,7 +1,4 @@
 { host, ... }:
-let
-  inherit (import ../../hosts/${host}/variables.nix) consoleKeyMap;
-in
 {
   system.stateVersion = "23.11"; # Do not change!
 
@@ -49,5 +46,5 @@ in
   };
 
   # Консольная раскладка
-  console.keyMap = "${consoleKeyMap}";
+  console.keyMap = "us";
 }
