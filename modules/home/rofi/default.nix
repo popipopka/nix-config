@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./config.nix
+#    ./config.nix
     ./rofi.nix
   ];
 }

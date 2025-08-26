@@ -2,14 +2,14 @@
   description = "Помогите...";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 #    catppuccin.url = "github:catppuccin/nix";
-    stylix.url = "github:danth/stylix/release-25.05";
+#    stylix.url = "github:danth/stylix";
     quickshell = {
           url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
           inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +36,7 @@
           };
           modules = [
             ./profiles/amd
-            stylix.nixosModules.stylix
+#            stylix.nixosModules.stylix
           ];
         };
 
@@ -50,7 +50,7 @@
           };
           modules = [
             ./profiles/nvidia
-            stylix.nixosModules.stylix
+#            stylix.nixosModules.stylix
           ];
         };
 
@@ -64,7 +64,7 @@
           };
           modules = [
             ./profiles/nvidia-laptop
-            stylix.nixosModules.stylix
+#            stylix.nixosModules.stylix
           ];
         };
 
@@ -78,7 +78,7 @@
           };
           modules = [
             ./profiles/intel
-            stylix.nixosModules.stylix
+#            stylix.nixosModules.stylix
           ];
         };
 
@@ -92,7 +92,7 @@
           };
           modules = [
             ./profiles/vm
-            stylix.nixosModules.stylix
+#            stylix.nixosModules.stylix
           ];
         };
       };

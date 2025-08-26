@@ -4,7 +4,7 @@
     ./kitty
     ./rofi
     ./waybar
-    ./wlogout
+#    ./wlogout
     ./zsh
     ./bat.nix
     ./btop.nix
@@ -14,7 +14,7 @@
     ./qt.nix
     ./starship.nix
 #    ./steam.nix
-    ./stylix.nix
+#    ./stylix.nix
     ./xdg.nix
     ./zoxide.nix
   ];
