@@ -17,7 +17,7 @@
 
   };
 
-  outputs = { nixpkgs, home-manager, quickshell, stylix, ... }@inputs:
+  outputs = { nixpkgs, home-manager, quickshell, ... }@inputs:
     let
       system = "x86_64-linux";
       host = "nix";

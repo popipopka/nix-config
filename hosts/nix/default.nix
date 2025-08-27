@@ -1,5 +1,5 @@
 {
   imports = [
-#    ./variables.nix
+    ./hardware.nix
   ];
 }
