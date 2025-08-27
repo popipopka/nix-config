@@ -39,6 +39,8 @@ in
     enable = true;
     package = pkgs.hyprland;
 
+    monitor = ", 1366x768@60, 0x0, 1";
+
     systemd = {
       enable = true;
       enableXdgAutostart = true;
