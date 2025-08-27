@@ -31,7 +31,6 @@
 
     # Разработка
     git
-    #docker-compose
 
     # Диагностика системы
     lm_sensors
