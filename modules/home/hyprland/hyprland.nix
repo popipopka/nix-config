@@ -140,9 +140,9 @@ in
       };
 
       extraConfig = "
-        monitor=,preferred,auto,auto
+#        monitor=,preferred,auto,auto
         monitor=, 1366x768@60, 0x0, 1
-        ${extraMonitorSettings}
+#        ${extraMonitorSettings}
         # To enable blur on waybar uncomment the line below
         #layerrule = blur,waybar
       ";

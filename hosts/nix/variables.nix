@@ -10,7 +10,7 @@
 #  displayManager = "tui";
 
   # Hyprland Settings
-  extraMonitorSettings = "monitor=Virtual-1,1365x768@60,auto,1";
+#  extraMonitorSettings = "monitor=Virtual-1,1365x768@60,auto,1";
 
   # Program Options
   keyboardLayout = "us,ru";

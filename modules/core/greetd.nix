@@ -1,7 +1,7 @@
 { pkgs, username, ...}:
 {
   services.greetd = {
-    enable = true;
+    enable = false;
 #    vt = 3;
 
     settings = {

@@ -24,17 +24,14 @@
     };
 
   environment.systemPackages = with pkgs; [
-    inputs.hyprsysteminfo.packages.${pkgs.system}.default
-#    home-manager
-
     # Рабочее окружение
     greetd.tuigreet
-    file-roller
-    mpv
+    #file-roller
+    #mpv
 
     # Разработка
     git
-    docker-compose
+    #docker-compose
 
     # Диагностика системы
     lm_sensors

@@ -1,7 +1,7 @@
 {
   imports = [
     ./hyprland
-    ./kitty
+#    ./kitty
     ./rofi
     ./waybar
 #    ./wlogout
