@@ -1,4 +1,4 @@
-_:
+{ pkgs, username, ... }:
 {
   security = {
     rtkit.enable = true;
@@ -17,9 +17,16 @@ _:
         })
       '';
     };
-
-#    pam.services.swaylock = {
-#      text = ''auth include login '';
-#    };
+    
+    #enableWrappers = true;
+    #wrappers = {
+     # nekoray = {
+      #  source = "${pkgs.nekoray}/bin/nekoray";
+       # owner = "${username}";
+     #   group = "root";
+      #  capabilities = "cap_net_admin+ep";
+       # permissions = "755";
+      #};
+    #};
   };
 }

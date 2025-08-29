@@ -31,6 +31,7 @@
         "fadeLayersIn, 1, 2, menu_decel"
         "fadeLayersOut, 1, 4.5, menu_accel"
         "workspaces, 1, 7, menu_decel, slide"
+        "specialWorkspace, 1, 5, menu_decel, fade"
       ];
     };
   };

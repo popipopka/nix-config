@@ -24,13 +24,25 @@
     };
 
   environment.systemPackages = with pkgs; [
+    # Офисный пакет
+    libreoffice
+    hunspell
+    hunspellDicts.ru-ru
+    hunspellDicts.en-us
+    
     # Рабочее окружение
-    greetd.tuigreet
-    #file-roller
+    file-roller
+    featherpad
+    nemo-with-extensions
+    google-chrome
+    nekoray
+    jetbrains.pycharm-professional
+    telegram-desktop
     #mpv
 
     # Разработка
     git
+    python313
 
     # Диагностика системы
     lm_sensors

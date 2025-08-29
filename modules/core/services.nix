@@ -2,7 +2,7 @@
 {
   # Сервисы
   services = {
-    libinput.enable = true; # Драйвера дял устройств ввода
+    libinput.enable = true; # Драйвера для устройств ввода
     blueman.enable = true; # GUI для Bluetooth
 
     fstrim.enable = true; # Оптимизация SSD

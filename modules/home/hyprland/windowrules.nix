@@ -7,69 +7,52 @@ let
 in
 {
   wayland.windowManager.hyprland.settings = {
-      windowrulev2 = [
+      windowrule = [
         #---- Browser -----------------------------
-#        "tag +browser, class:^(Brave-browser(-beta|-dev|-unstable)?)$"
-#        "tag +browser, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
-#        "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
-#        "tag +browser, class:^([Tt]horium-browser|[Cc]achy-browser)$"
-#
-#        "workspace 5 silent, tag:browser*"
+        "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
+
+        "workspace 5 silent, tag:browser*"
 
 
         #---- File Manager ------------------------
-#        "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt|[Nn]emo)$"
+        "tag +file-manager, class:^([Nn]emo)$"
 
-#         "float, tag:file-manager*"
+        "float, tag:file-manager*"
 
 
         #---- Obsidian ----------------------------
-#        "workspace special:magic silent, class:(obsidian)"
+        "workspace special:magic silent, class:(obsidian)"
 
 
         #---- JetBrains IDE`s ---------------------
-#        "workspace 6 silent, class:^(jetbrains-.*)$"
-#        "nodim, class:^(jetbrains-.*)$"
+        "tag +jetbrains, class:^(jetbrains-.*)$"
+        
+        "workspace 6 silent, tag:jetbrains*"
+        "nodim, tag:jetbrains"
 
-
-        #---- JetBrains Toolbox -------------------
 #        "workspace 6 silent, class:(com-jetbrains-toolbox-entry-ToolboxEntry)"
 #        "nodim, class:(com-jetbrains-toolbox-entry-ToolboxEntry)"
 
 
-        #---- telegram ----------------------------
-#        "workspace 4 silent, class:(org.telegram.desktop)"
+        #---- Telegram ----------------------------
+        "workspace 4 silent, class:(org.telegram.desktop)"
 
 
-        #---- qimgv -------------------------------
-#        "float, class:(qimgv)"
-
-
-        #---- kitty -------------------------------
-#        "float, class:^(kitty)$"
-#        "move cursor -50% -50%, class:^(kitty)$"
-#        "opacity 0.82 override 0.7 override 1.0 override, class:^(kitty)$"
+        #---- Terminal ----------------------------
+        "tag +terminal, class:^(kitty)$"
+        
+        "float, tag:terminal*"
+        "move cursor -50% -50%, tag:terminal*"
+        "opacity 0.82 override 0.7 override 1.0 override, tag:terminal*"
 
 
         #---- NetworkManager ----------------------
-#        "pin, title:(nmtui)"
+        "pin, title:(nmtui)"
 
 
-        #---- file roller -------------------------
-#        "float, class:(org.gnome.FileRoller)"
-#        "size 44% 63%, class:(file-roller), title:(Extract)"
-
-
-        #---- rofi --------------------------------
-#        "float, class:(Rofi)"
-#        "noborder, class:(Rofi)"
-#        "pin, class:(Rofi)"
-
-        #---- xreader -----------------------------
-#        "float, title:(Document Viewer)"
-
-        #---- polkit-gnome-authentication-agent -----
-#        "float,class:^(org.gnome.polkit-gnome-authentication-agent-1)$"
+        #---- File roller -------------------------
+        "float, class:(org.gnome.FileRoller)"
+        "size 44% 63%, class:(file-roller), title:(Extract)"
 
         #---- xwaylandvideobridge -----------------
 #        "opacity 0.0 override 0.0 override, class:^(xwaylandvideobridge)$"

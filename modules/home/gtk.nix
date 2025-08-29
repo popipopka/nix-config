@@ -2,7 +2,7 @@
 {
   gtk = {
     iconTheme = {
-      name = "Papirus-Dark";
+      name = "Papirus-Light";
       package = pkgs.papirus-icon-theme;
     };
     gtk3.extraConfig = {

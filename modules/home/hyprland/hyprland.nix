@@ -39,8 +39,6 @@ in
     enable = true;
     package = pkgs.hyprland;
 
-    monitor = ", 1366x768@60, 0x0, 1";
-
     systemd = {
       enable = true;
       enableXdgAutostart = true;
@@ -50,8 +48,15 @@ in
     xwayland = {
       enable = true;
     };
+    
+    extraConfig = "
+      layerrule = noanim,^(rofi)$
+    ";
 
     settings = {
+
+      monitor = [ ", 1366x768@60, 0x0, 1" ];
+
       input = {
         kb_layout = "${keyboardLayout}";
         kb_options = "grp:win_space_toggle";
@@ -140,33 +145,10 @@ in
       render = {
         direct_scanout = 0;
       };
-
-      extraConfig = "
-#        monitor=,preferred,auto,auto
-        monitor=, 1366x768@60, 0x0, 1
-#        ${extraMonitorSettings}
-        # To enable blur on waybar uncomment the line below
-        #layerrule = blur,waybar
-      ";
-
-#        animations = {
-#          enabled = true;
-#
-#          bezier = [
-#            "myBezier, 0.05, 0.9, 0.1, 1.05"
-#          ];
-#
-#          animation = [
-#            "windows, 1, 7, myBezier"
-#            "windowsIn, 1, 7, myBezier, popin 60%"
-#            "windowsOut, 1, 7, myBezier, popin 80%"
-#            "border, 1, 10, default"
-#            "borderangle, 1, 8, default"
-#            "fade, 1, 7, default"
-#            "workspaces, 1, 5, default"
-#            "specialWorkspace, 1, 5, default, fade"
-#          ];
-#        };
+      
+      xwayland = {
+        force_zero_scaling = true;
       };
     };
+  };
 }

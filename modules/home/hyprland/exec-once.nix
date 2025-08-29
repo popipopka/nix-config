@@ -14,14 +14,14 @@ in
       "systemctl --user start hyprpolkitagent"
 
       #---- Apps --------------------------------
-#      "chromium"
-#      "telegram-desktop"
-#      "nekoray"
+      "google-chrome-stable"
+      "telegram-desktop"
+      "sudo -E nekoray"
 
       #---- Other -------------------------------
 #      "dunst"
-#      "waybar"
-      "swww img ${stylixImage}"
+      "killall -q waybar;sleep .5 && waybar"
+      "killall -q swww;sleep .5 && swww-daemon && swww img ${stylixImage}"
 
       #---- OSD ---------------------------------
 #      "sh -c 'rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob'"

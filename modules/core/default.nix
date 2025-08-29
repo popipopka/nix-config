@@ -3,16 +3,16 @@
     ./battery.nix
     ./boot.nix
     ./fonts.nix
-    ./greetd.nix
     ./hardware.nix
     ./network.nix
     ./nh.nix
     ./packages.nix
 #    ./printing.nix
     ./quickshell.nix
+    ./sddm.nix
     ./security.nix
     ./services.nix
-#    ./stylix.nix
+    ./stylix.nix
     ./system.nix
     ./user.nix
 #    ./virtualisation.nix

@@ -4,9 +4,6 @@
     "$ctrlMod" = "SUPER CTRL";
     "$shiftMod" = "SUPER SHIFT";
     
-    "$launcher" = "../rofi/config/scripts/launcher/launcher.sh";
-    "$clipboard" = "../rofi/config/scripts/clipboard/clipboard.sh";
-    
     bind = [
       #---- Скриншоты ---------------------------
       "$shiftMod, PRINT, exec, hyprshot -m output --freeze -t 1700"
@@ -15,10 +12,10 @@
 
       #---- Запуск приложений -------------------
       "$mainMod, n, exec, kitty"
-      "$mainMod, r, exec, pkill rofi || $launcher"
+      "$mainMod, r, exec, rofi-launcher"
 
       #---- Буфер обмена ------------------------
-      "$mainMod, tab, exec, pkill rofi || $clipboard"
+      "$mainMod, tab, exec, rofi-clipboard"
       "$shiftMod, tab, exec, pkill rofi || cliphist wipe"
 
       #---- Действия над системой ---------------

@@ -7,11 +7,15 @@
     docker = {
       enable = true;
       storageDriver = "btrfs";
+      autoPrune = {
+        enable = true;
+        dates = "monthly";
+      };
     };
 
     # VirtualBox
     virtualbox.host = {
-      enable = true;
+      enable = false;
       enableExtensionPack = true;
     };
 

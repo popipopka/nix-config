@@ -1,6 +1,6 @@
-_: {
+{ inputs, ... }: 
+{
   stylix.targets = {
-    autoEnable = false;
     waybar.enable = false;
     rofi.enable = false;
     hyprland.enable = false;

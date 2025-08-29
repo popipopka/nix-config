@@ -126,11 +126,11 @@ programs.waybar = {
       ''
         * {
             border: none;
-            border-radius: 0;
+            border-radius: 0px;
             font-family: "JetBrainsMono Nerd Font";
             font-weight: bold;
             font-size: 12px;
-            min-height: 18px;
+            min-height: 0px;
         }
         window#waybar {
             background: rgba(0, 0, 0, 0);
@@ -165,7 +165,7 @@ programs.waybar = {
             margin-top: 2px;
         }
         #tray menu {
-            border-radius: 10;
+            border-radius: 10px;
             opacity: 0.9;
         }
         #clock {
