@@ -15,7 +15,7 @@ in
     #image = stylixImage;
 
     polarity = "dark";
-    opacity.terminal = 0.9;
+    opacity.terminal = 0.95;
 
     cursor = {
       package = pkgs.apple-cursor;
@@ -68,10 +68,10 @@ in
       };
       
       sizes = {
-        applications = 12;
-        terminal = 11;
+        applications = 11;
+        terminal = 9;
         desktop = 11;
-        popups = 12;
+        popups = 11;
       };
     };
   };

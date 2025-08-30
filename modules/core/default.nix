@@ -15,7 +15,7 @@
     ./stylix.nix
     ./system.nix
     ./user.nix
-#    ./virtualisation.nix
+    ./virtualisation.nix
     ./xserver.nix
     ./zram.nix
   ];

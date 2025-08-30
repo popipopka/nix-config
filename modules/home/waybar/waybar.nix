@@ -165,8 +165,8 @@ programs.waybar = {
             margin-top: 2px;
         }
         #tray menu {
-            border-radius: 10px;
-            opacity: 0.9;
+            border-radius: 0px;
+            opacity: 0.95;
         }
         #clock {
             margin-right: 7px;

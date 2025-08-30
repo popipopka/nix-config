@@ -16,11 +16,11 @@ in
       swww
       wl-clipboard
       cliphist
-      nwg-displays
       brightnessctl
       hyprpolkitagent
       hyprland-qtutils
       hyprshot
+      hyprnotify
 #      swappy
     ];
 

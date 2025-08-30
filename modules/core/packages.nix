@@ -24,19 +24,22 @@
     };
 
   environment.systemPackages = with pkgs; [
+    # JetBrains
+    jetbrains.pycharm-professional
+
     # Офисный пакет
     libreoffice
     hunspell
     hunspellDicts.ru-ru
     hunspellDicts.en-us
-    
+
     # Рабочее окружение
     file-roller
-    featherpad
     nemo-with-extensions
-    google-chrome
+    featherpad
+    font-manager
     nekoray
-    jetbrains.pycharm-professional
+    google-chrome
     telegram-desktop
     #mpv
 

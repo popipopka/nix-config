@@ -16,7 +16,7 @@ in
       #---- Apps --------------------------------
       "google-chrome-stable"
       "telegram-desktop"
-      "sudo -E nekoray"
+      "nekoray"
 
       #---- Other -------------------------------
 #      "dunst"

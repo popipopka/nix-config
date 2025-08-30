@@ -6,29 +6,7 @@
     settings = {
       add_newline = true;
 
-#      format = ''
-#        $directory\
-#        $git_branch\
-#        $git_commit\
-#        $git_state\
-#        $git_metrics\
-#        $git_status\
-#        $hg_branch\
-#        $cmd_duration\
-#
-#        $fill\
-#
-#        $java\
-#        $kotlin\
-#        $python\
-#        $c\
-#
-#        $gradle\
-#        $cmake\
-#
-#        $line_break\
-#        $character
-#      '';
+      format = ''$directory$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$cmd_duration$fill$java$kotlin$python$c$gradle$cmake$line_break$character'';
 
       fill = {
         symbol = " ";

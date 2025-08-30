@@ -17,8 +17,9 @@
       save = 10000;
       size = 10000;
       ignorePatterns = ["kill *"];
+      ignoreAllDups = true;
+      ignoreSpace = true;
     };
-
 
     oh-my-zsh = {
       enable = true;
@@ -38,6 +39,5 @@
         source $HOME/.zshrc-personal
       fi
     '';
-
   };
 }

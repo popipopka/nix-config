@@ -33,5 +33,7 @@
   # Доп. пакеты, связанные с виртуализацией/контейнеризацией
   environment.systemPackages = with pkgs; [
     docker-compose
+    docker-buildx
+    dive
   ];
 }
