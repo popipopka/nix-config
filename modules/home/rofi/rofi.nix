@@ -31,6 +31,8 @@
           text-color = mkLiteral "${config.stylix.base16Scheme.base05}";
           border-color = mkLiteral "${config.stylix.base16Scheme.base0F}";
           urgent = mkLiteral "${config.stylix.base16Scheme.base0E}";
+
+          font = "JetBrains Mono NL 9";
         };
         
         "window" = {
@@ -47,10 +49,9 @@
           border-radius = mkLiteral "25px";
           background-color = mkLiteral "@bg";
         };
-        
         "mainbox" = {
           enabled = true;
-          spacing = mkLiteral "15px";
+          spacing = mkLiteral "10px";
           orientation = mkLiteral "vertical";
           children = map mkLiteral [
             "inputbar"
@@ -59,7 +60,18 @@
           ];
           background-color = mkLiteral "transparent";
         };
-        
+        "inputbar" = {
+          enabled = true;
+          spacing = mkLiteral "10px";
+          padding = mkLiteral "8px";
+          border-radius = mkLiteral "15px";
+          background-color = mkLiteral "@bg-alt";
+          text-color = mkLiteral "@foreground";
+          children = map mkLiteral [
+            "textbox-prompt-colon"
+            "entry"
+          ];
+        };
         "listbox" = {
           spacing = mkLiteral "10px";
           background-color = mkLiteral "transparent";
@@ -67,19 +79,6 @@
           children = map mkLiteral [
             "message"
             "listview"
-          ];
-        };
-        
-        "inputbar" = {
-          enabled = true;
-          spacing = mkLiteral "10px";
-          padding = mkLiteral "10px";
-          border-radius = mkLiteral "15px";
-          background-color = mkLiteral "@bg-alt";
-          text-color = mkLiteral "@foreground";
-          children = map mkLiteral [
-            "textbox-prompt-colon"
-            "entry"
           ];
         };
         "textbox-prompt-colon" = {
@@ -97,32 +96,28 @@
           placeholder = "Search";
           placeholder-color = mkLiteral "inherit";
         };
-        
         "mode-switcher" = {
           enabled = true;
-          spacing = mkLiteral "15px";
+          spacing = mkLiteral "10px";
           background-color = mkLiteral "transparent";
           text-color = mkLiteral "@foreground";
-         };
-         
-         "button" = {
-           padding = mkLiteral "10px";
-           border-radius = mkLiteral "20px";
-           background-color = mkLiteral "@bg-alt";
-           text-color = mkLiteral "inherit";
-           cursor = mkLiteral "pointer";
-         };
+        };
+        "button" = {
+          padding = mkLiteral "8px";
+          border-radius = mkLiteral "20px";
+          background-color = mkLiteral "@bg-alt";
+          text-color = mkLiteral "inherit";
+          cursor = mkLiteral "pointer";
+        };
         "button selected" = {
           background-color = mkLiteral "@selected";
           text-color = mkLiteral "@foreground";
         };
-        
         "listview" = {
           enabled = true;
-          columns = 1;
+          columns = 2;
           lines = 6;
           cycle = true;
-          dynamic = true;
           scrollbar = false;
           layout = mkLiteral "vertical";
           reverse = false;
@@ -133,11 +128,10 @@
           text-color = mkLiteral "@foreground";
           cursor = "default";
         };
-        
         "element" = {
           enabled = true;
-          spacing = mkLiteral "8px";
-          padding = mkLiteral "8px";
+          spacing = mkLiteral "5px";
+          padding = mkLiteral "5px";
           border-radius = mkLiteral "10px";
           background-color = mkLiteral "transparent";
           text-color = mkLiteral "@text-color";
@@ -180,12 +174,11 @@
           vertical-align = mkLiteral "0.5";
           horizontal-align = mkLiteral "0.0";
         };
-        
         "message" = {
           background-color = mkLiteral "transparent";
         };
         "textbox" = {
-          padding = mkLiteral "10px";
+          padding = mkLiteral "5px";
           border-radius = mkLiteral "10px";
           background-color = mkLiteral "@bg-alt";
           text-color = mkLiteral "@foreground";

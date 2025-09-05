@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./config.nix
+    ./clipboard-theme.nix
     ./rofi.nix
   ];
   

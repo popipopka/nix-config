@@ -65,13 +65,13 @@
 
     bindel = [
       #--- Изменение звука ----------------------
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $WOBSOCK"
-      ", XF86AudioLowerVolume, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $WOBSOCK"
+      ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock"
+      ", XF86AudioLowerVolume, exec, wpctl set-volume -l 2 @DEFAULT_AUDIO_SINK@ 5%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $XDG_RUNTIME_DIR/wob.sock"
 
 
      #--- Изменение яркости --------------------
-     ", XF86MonBrightnessUp, exec, brightnessctl set 7%+ | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK"
-     ", XF86MonBrightnessDown, exec, brightnessctl set 7%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $WOBSOCK"
+     ", XF86MonBrightnessUp, exec, brightnessctl set 7%+ | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $XDG_RUNTIME_DIR/wob.sock"
+     ", XF86MonBrightnessDown, exec, brightnessctl set 7%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > $XDG_RUNTIME_DIR/wob.sock"
     ];
   };
 }

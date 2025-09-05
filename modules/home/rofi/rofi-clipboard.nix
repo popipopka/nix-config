@@ -4,6 +4,6 @@ pkgs.writeShellScriptBin "rofi-clipboard" ''
   if pidof rofi > /dev/null; then
     pkill rofi
   fi
-  cliphist list | rofi -dmenu -display-columns 2 | cliphist decode | wl-copy
+  cliphist list | rofi -dmenu -display-columns 2 -theme clipboard | cliphist decode | wl-copy
 ''
 

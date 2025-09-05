@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, cursor, ... }: {
   nixpkgs.config.allowUnfree = true;
 
   programs = {
@@ -24,8 +24,11 @@
     };
 
   environment.systemPackages = with pkgs; [
-    # JetBrains
+    # Код
     jetbrains.pycharm-professional
+    code-cursor
+    insomnia
+    dbeaver-bin
 
     # Офисный пакет
     libreoffice
@@ -41,11 +44,19 @@
     nekoray
     google-chrome
     telegram-desktop
+    termius
+    goaccess
+    obsidian
     #mpv
 
     # Разработка
     git
     python313
+    python310
+    mysql84
+    gcc
+    ngrok
+    nodejs_24
 
     # Диагностика системы
     lm_sensors
@@ -54,6 +65,9 @@
     lshw
     glxinfo
     inxi
+    
+    # Системные либы
+    libnotify
   ];
 
   environment.shells = with pkgs; [

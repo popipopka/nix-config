@@ -11,10 +11,12 @@
     ./eza.nix
     ./git.nix
     ./gtk.nix
+    ./mako.nix
     ./qt.nix
     ./starship.nix
 #    ./steam.nix
     ./stylix.nix
+    ./wob.nix
     ./xdg.nix
     ./zoxide.nix
   ];

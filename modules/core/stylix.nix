@@ -56,7 +56,7 @@ in
       };
       monospace = {
         package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrains Mono";
+        name = "JetBrains Mono NL";
       };
       sansSerif = {
         package = pkgs.montserrat;
