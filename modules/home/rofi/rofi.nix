@@ -9,7 +9,7 @@
       modi = "drun,filebrowser";        
       show-icons = true;
       icon-theme = "Papirus";
-      font = "JetBrainsMono Nerd Font Mono 11";
+      font = "Montserrat 10";
       drun-display-format = "{icon} {name}";
       display-drun = " Apps";
       display-filebrowser = " File";
@@ -31,8 +31,6 @@
           text-color = mkLiteral "${config.stylix.base16Scheme.base05}";
           border-color = mkLiteral "${config.stylix.base16Scheme.base0F}";
           urgent = mkLiteral "${config.stylix.base16Scheme.base0E}";
-
-          font = "JetBrains Mono NL 9";
         };
         
         "window" = {
