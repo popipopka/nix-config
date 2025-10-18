@@ -18,6 +18,11 @@ in
         "tag +file-manager, class:^([Nn]emo)$"
 
         "float, tag:file-manager*"
+        
+        
+        # Cisco Packet Tracer
+        "float, class:^(PacketTracer7)$"
+        "float, class:^(PacketTracer)$"
 
 
         #---- Obsidian ----------------------------

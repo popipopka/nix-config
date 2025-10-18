@@ -1,5 +1,11 @@
-{ pkgs, cursor, ... }: {
+{ pkgs, inputs, config, pkgsUnstable, ... }: {
   nixpkgs.config.allowUnfree = true;
+  
+  # Unstable канал
+  _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    inherit (config.nixpkgs) config;
+  };
 
   programs = {
       neovim = {
@@ -25,8 +31,9 @@
 
   environment.systemPackages = with pkgs; [
     # Код
-    jetbrains.pycharm-professional
-    code-cursor
+    (pkgsUnstable.jetbrains.pycharm-professional)
+    (pkgsUnstable.jetbrains.idea-ultimate)
+    (pkgsUnstable.code-cursor)
     insomnia
     dbeaver-bin
 
@@ -39,15 +46,18 @@
     # Рабочее окружение
     file-roller
     nemo-with-extensions
-    featherpad
     font-manager
     nekoray
     google-chrome
     telegram-desktop
     termius
-    goaccess
     obsidian
-    #mpv
+    notepadqq
+    (pkgsUnstable.yandex-music)
+    
+    # ВУЗ
+    ciscoPacketTracer7
+    ciscoPacketTracer8
 
     # Разработка
     git
@@ -65,9 +75,17 @@
     lshw
     glxinfo
     inxi
+    lsof
     
     # Системные либы
     libnotify
+    
+    # PDF
+    poppler
+    
+    # Терминал
+    (pkgsUnstable.waveterm)
+    doxx
   ];
 
   environment.shells = with pkgs; [

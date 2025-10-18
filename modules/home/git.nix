@@ -23,6 +23,7 @@ in
     git = "LANG=en_US.UTF-8 git";
     gcl = "git clone";
     gsw = "git switch";
+    gswc = "git switch -c";
     gm = "git merge";
 
     gl = "git log --pretty=format:'%C(yellow)commit %C(auto)%h%d %C(green)(%cr) %C(cyan)<%an> %n%n      %Creset%s%n' --date=relative";
@@ -42,5 +43,10 @@ in
     gps = "git push origin";
     gpsu = "git push -u origin main";
     gpsf = "git push origin --force";
+    
+    gst = "git stash";
+    gstp = "git stash pop";
+    
+    grb = "git rebase";
   };
 }
