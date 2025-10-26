@@ -1,6 +1,10 @@
 { pkgs, inputs, config, pkgsUnstable, ... }: {
   nixpkgs.config.allowUnfree = true;
   
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-35.7.5"
+  ];
+  
   # Unstable канал
   _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
     inherit (pkgs.stdenv.hostPlatform) system;
@@ -33,7 +37,9 @@
     # Код
     (pkgsUnstable.jetbrains.pycharm-professional)
     (pkgsUnstable.jetbrains.idea-ultimate)
+    (pkgsUnstable.android-studio)
     (pkgsUnstable.code-cursor)
+    (pkgsUnstable.yaak)
     insomnia
     dbeaver-bin
 
@@ -49,9 +55,9 @@
     font-manager
     nekoray
     google-chrome
-    telegram-desktop
-    termius
-    obsidian
+    (pkgsUnstable.telegram-desktop)
+    (pkgsUnstable.obsidian)
+    (pkgsUnstable.affine)
     notepadqq
     (pkgsUnstable.yandex-music)
     
@@ -60,7 +66,6 @@
     ciscoPacketTracer8
 
     # Разработка
-    git
     python313
     python310
     mysql84
@@ -79,12 +84,14 @@
     
     # Системные либы
     libnotify
+    stdenv.cc.cc.lib
+    zlib
+    ffmpeg
     
     # PDF
     poppler
     
     # Терминал
-    (pkgsUnstable.waveterm)
     doxx
   ];
 
