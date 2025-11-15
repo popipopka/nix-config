@@ -1,5 +1,6 @@
 {
   imports = [
+    ./amnezia.nix
     ./hyprland
     ./kitty
     ./rofi
