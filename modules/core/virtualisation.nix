@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 {
   # Либо podman, либо docker - нельзя одновременно
+  
+  # Отключаем KVM для работы VirtualBox
+  boot.blacklistedKernelModules = [ "kvm" "kvm_intel" "kvm_amd" ];
 
   virtualisation = {
     # Docker
@@ -14,9 +17,17 @@
     };
 
     # VirtualBox
-    virtualbox.host = {
-      enable = false;
-      enableExtensionPack = true;
+    virtualbox = {
+      host = {
+        enable = true;
+        enableExtensionPack = true;
+      };
+      guest = {
+        enable = true;
+        clipboard = true;
+        dragAndDrop = true;
+        vboxsf = true;
+      };
     };
 
     # Podman

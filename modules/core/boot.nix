@@ -1,7 +1,7 @@
 {pkgs, ...}:
 {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_xanmod_stable;
 
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;

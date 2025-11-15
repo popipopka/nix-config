@@ -34,18 +34,18 @@
 
       # Clipboard
       map kitty_mod+c 				copy_to_clipboard
-	  map kitty_mod+v 				paste_from_clipboard
+	    map kitty_mod+v 				paste_from_clipboard
 
-	  # Scrolling
-	  map kitty_mod+up    			scroll_line_up
-	  map kitty_mod+down    		scroll_line_down
-	  map kitty_mod+home 			scroll_home
-	  map kitty_mod+end 			scroll_end
+	    # Scrolling
+	    map kitty_mod+up    			scroll_line_up
+	    map kitty_mod+down    		scroll_line_down
+	    map kitty_mod+home 			scroll_home
+	    map kitty_mod+end 			scroll_end
 
-	  # Tab
-	  map alt+t				        new_tab
-	  map alt+q				        close_tab
-	  map alt+tab				    next_tab
+	    # Tab
+	    map alt+t				        new_tab
+	    map alt+q				        close_tab
+	    map alt+tab				    next_tab
     '';
   };
 }

@@ -38,6 +38,10 @@
       if [ -f $HOME/.zshrc-personal ]; then
         source $HOME/.zshrc-personal
       fi
+
+      if [ "$TERM" = "xterm-kitty" ]; then
+        alias ssh="kitty +kitten ssh"
+      fi
     '';
   };
 }

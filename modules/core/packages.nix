@@ -1,4 +1,4 @@
-{ pkgs, inputs, config, pkgsUnstable, ... }: {
+{ pkgs, inputs, config, pkgsUnstable, lib, ... }: {
   nixpkgs.config.allowUnfree = true;
   
   nixpkgs.config.permittedInsecurePackages = [
@@ -33,6 +33,9 @@
       };
     };
 
+  environment.sessionVariables.LD_LIBRARY_PATH = lib.mkForce 
+    "${pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.zlib pkgs.libGL pkgs.glib ]}:${toString (builtins.getEnv "LD_LIBRARY_PATH")}";
+
   environment.systemPackages = with pkgs; [
     # Код
     (pkgsUnstable.jetbrains.pycharm-professional)
@@ -52,32 +55,30 @@
     # Рабочее окружение
     file-roller
     nemo-with-extensions
-    font-manager
-    nekoray
     google-chrome
     (pkgsUnstable.telegram-desktop)
     (pkgsUnstable.obsidian)
     (pkgsUnstable.affine)
     notepadqq
     (pkgsUnstable.yandex-music)
+    baobab
     
-    # ВУЗ
-    ciscoPacketTracer7
-    ciscoPacketTracer8
-
     # Разработка
     python313
     python310
     mysql84
     gcc
     ngrok
+    ninja
     nodejs_24
+    go
 
     # Диагностика системы
     lm_sensors
     pciutils
     usbutils
     lshw
+    ethtool
     glxinfo
     inxi
     lsof
@@ -87,12 +88,17 @@
     stdenv.cc.cc.lib
     zlib
     ffmpeg
+    libGL
+    glib
     
     # PDF
     poppler
     
     # Терминал
     doxx
+    
+    # Wake On LAN
+    wakeonlan
   ];
 
   environment.shells = with pkgs; [

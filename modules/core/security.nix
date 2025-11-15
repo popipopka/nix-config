@@ -18,15 +18,15 @@
       '';
     };
     
-    enableWrappers = true;
-    wrappers = {
-      nekoray = {
-        source = "${pkgs.nekoray}/bin/nekoray";
-        owner = "${username}";
-        group = "users";
-        capabilities = "cap_net_admin+ep";
-        #permissions = "755";
-      };
-    };
+    #enableWrappers = true;
+    #wrappers = {
+    #  nekoray = {
+    #    source = "${pkgs.nekoray}/bin/nekoray";
+    #    owner = "${username}";
+    #    group = "users";
+    #    capabilities = "cap_net_admin+ep";
+    #    #permissions = "755";
+    #  };
+    #};
   };
 }
