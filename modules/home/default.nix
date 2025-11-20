@@ -1,6 +1,5 @@
 {
   imports = [
-    ./amnezia.nix
     ./hyprland
     ./kitty
     ./rofi
@@ -18,6 +17,7 @@
     ./starship.nix
 #    ./steam.nix
     ./stylix.nix
+    ./udiskie.nix
     ./wave.nix
     ./wob.nix
     ./xdg.nix

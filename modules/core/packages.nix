@@ -31,7 +31,11 @@
         enable = true;
         enableSSHSupport = true;
       };
-    };
+
+      amnezia-vpn = {
+        enable = true;
+      };
+  };
 
   environment.sessionVariables.LD_LIBRARY_PATH = lib.mkForce 
     "${pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.zlib pkgs.libGL pkgs.glib ]}:${toString (builtins.getEnv "LD_LIBRARY_PATH")}";
@@ -99,6 +103,10 @@
     
     # Wake On LAN
     wakeonlan
+
+    # Файловая система
+    exfatprogs  #exFAT
+    parted
   ];
 
   environment.shells = with pkgs; [

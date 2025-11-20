@@ -31,6 +31,11 @@
       autodetect = true;
     };
 
+    # udisks. Нужен для udiskie
+    udisks2 = {
+      enable = true;
+    };
+
     # Pipeware
     pipewire = {
       enable = true;
