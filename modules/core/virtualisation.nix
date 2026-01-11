@@ -19,14 +19,14 @@
     # VirtualBox
     virtualbox = {
       host = {
-        enable = true;
-        enableExtensionPack = true;
+        enable = false;
+        enableExtensionPack = false;
       };
       guest = {
-        enable = true;
-        clipboard = true;
-        dragAndDrop = true;
-        vboxsf = true;
+        enable = false;
+        clipboard = false;
+        dragAndDrop = false;
+        vboxsf = false;
       };
     };
 

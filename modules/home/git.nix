@@ -48,5 +48,6 @@ in
     gstp = "git stash pop";
     
     grb = "git rebase";
+    gcp = "git cherry-pick -n";
   };
 }

@@ -11,14 +11,9 @@
     };
     
     stylix.url = "github:danth/stylix/release-25.05";
-    quickshell = {
-          url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
-
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, quickshell, stylix, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, stylix, ... }@inputs:
     let
       system = "x86_64-linux";
       host = "nix";

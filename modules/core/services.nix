@@ -30,6 +30,12 @@
         else true;
       autodetect = true;
     };
+    
+    # BTRFS
+    btrfs.autoScrub = {
+      enable  = true;
+      interval = "monthly";
+    };
 
     # udisks. Нужен для udiskie
     udisks2 = {

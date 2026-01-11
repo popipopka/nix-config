@@ -8,7 +8,14 @@ in
     hostName = "${host}";
     hostId = hostId;
 
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
+
+    nameservers = [
+      "94.140.14.49"
+      "94.140.14.59"
+    ];
 
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 

@@ -1,5 +1,6 @@
 { pkgs, inputs, config, pkgsUnstable, lib, ... }: {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowCollisions = true;
   
   nixpkgs.config.permittedInsecurePackages = [
     "electron-35.7.5"
@@ -38,16 +39,23 @@
   };
 
   environment.sessionVariables.LD_LIBRARY_PATH = lib.mkForce 
-    "${pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc.lib pkgs.zlib pkgs.libGL pkgs.glib ]}:${toString (builtins.getEnv "LD_LIBRARY_PATH")}";
+    "${pkgs.lib.makeLibraryPath [ pkgs.mysql84 pkgs.stdenv.cc.cc.lib pkgs.zlib pkgs.libGL pkgs.glib ]}:${toString (builtins.getEnv "LD_LIBRARY_PATH")}";
+
+  environment.sessionVariables.PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
+  environment.sessionVariables.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
+  environment.sessionVariables.CHROME_EXECUTABLE = "${pkgs.google-chrome}/bin/google-chrome-stable";
 
   environment.systemPackages = with pkgs; [
+    # Playwright
+    (pkgsUnstable.python312Packages.playwright)
+    (pkgsUnstable.playwright-driver.browsers)
+
     # Код
     (pkgsUnstable.jetbrains.pycharm-professional)
     (pkgsUnstable.jetbrains.idea-ultimate)
     (pkgsUnstable.android-studio)
     (pkgsUnstable.code-cursor)
     (pkgsUnstable.yaak)
-    insomnia
     dbeaver-bin
 
     # Офисный пакет
@@ -63,19 +71,22 @@
     (pkgsUnstable.telegram-desktop)
     (pkgsUnstable.obsidian)
     (pkgsUnstable.affine)
+    (pkgsUnstable.bitwarden-desktop)
     notepadqq
-    (pkgsUnstable.yandex-music)
     baobab
     
     # Разработка
     python313
+    python312
     python310
     mysql84
     gcc
+    postgresql
     ngrok
     ninja
     nodejs_24
     go
+    flutter
 
     # Диагностика системы
     lm_sensors
