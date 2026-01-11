@@ -11,7 +11,7 @@ in
   config = mkIf cfg.enable {
     services.qemuGuest.enable = true;
     services.spice-vdagentd.enable = true;
-    services.spice-webdavd.enable = true;
+    services.spice-webdavd.enable = false; #Causes build failure davsfs2 unsupported neon version 9-12-25;
   };
 }
 

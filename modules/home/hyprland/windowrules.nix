@@ -1,10 +1,4 @@
 {host, ...}:
-let
-  inherit
-    (import ../../../hosts/${host}/variables.nix)
-    extraMonitorSettings
-    ;
-in
 {
   wayland.windowManager.hyprland.settings = {
       windowrule = [
@@ -18,11 +12,6 @@ in
         "tag +file-manager, class:^([Nn]emo)$"
 
         "float, tag:file-manager*"
-        
-        
-        # Cisco Packet Tracer
-        "float, class:^(PacketTracer7)$"
-        "float, class:^(PacketTracer)$"
 
 
         #---- Obsidian ----------------------------
@@ -34,9 +23,6 @@ in
         
         "workspace 6 silent, tag:jetbrains*"
         "nodim, tag:jetbrains"
-
-#        "workspace 6 silent, class:(com-jetbrains-toolbox-entry-ToolboxEntry)"
-#        "nodim, class:(com-jetbrains-toolbox-entry-ToolboxEntry)"
 
 
         #---- Telegram ----------------------------
@@ -58,13 +44,6 @@ in
         #---- File roller -------------------------
         "float, class:(org.gnome.FileRoller)"
         "size 44% 63%, class:(file-roller), title:(Extract)"
-
-        #---- xwaylandvideobridge -----------------
-#        "opacity 0.0 override 0.0 override, class:^(xwaylandvideobridge)$"
-#        "noanim, class:^(xwaylandvideobridge)$"
-#        "noinitialfocus, class:^(xwaylandvideobridge)$"
-#        "maxsize 100 100, class:^(xwaylandvideobridge)$"
-#        "noblur, class:^(xwaylandvideobridge)$"
       ];
     };
 }

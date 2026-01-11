@@ -2,12 +2,13 @@
   imports = [
     ./battery.nix
     ./boot.nix
+    ./cachix.nix
     ./fonts.nix
     ./hardware.nix
     ./network.nix
     ./nh.nix
     ./packages.nix
-#    ./printing.nix
+    ./printing.nix
     ./sddm.nix
     ./security.nix
     ./services.nix

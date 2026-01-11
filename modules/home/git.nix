@@ -6,16 +6,32 @@ in
   programs.git = {
     enable = true;
 
-    userName = "${gitUsername}";
-    userEmail = "${gitEmail}";
+    settings = {
+      user = {
+        name = "${gitUsername}";
+        email = "${gitEmail}";
+      };
 
-    extraConfig = {
-      push.default = "simple";
-      credential.helper = "cache --timeout=7200";
-      init.defaultBranch = "main";
-      log.decorate = "full";
-      log.date = "iso";
-      merge.conflictStyle = "diff3";
+      push = {
+        default = "simple";
+      };
+
+      credential = {
+        helper = "cache --timeout=7200";
+      };
+
+      init = {
+        defaultBranch = "main";
+      };
+
+      log = {
+        decorate = "full";
+        date = "iso";
+      };
+
+      merge = {
+        conflictStyle = "diff3";
+      };
     };
   };
 
@@ -48,6 +64,7 @@ in
     gstp = "git stash pop";
     
     grb = "git rebase";
-    gcp = "git cherry-pick -n";
+    gcp = "git cherry-pick";
+    gcpn = "git cherry-pick -n";
   };
 }

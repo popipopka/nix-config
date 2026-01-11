@@ -1,13 +1,14 @@
-{ pkgs, inputs, config, pkgsUnstable, lib, ... }: {
+{ pkgs, inputs, config, upkgs, lib, ... }: {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowCollisions = true;
   
   nixpkgs.config.permittedInsecurePackages = [
     "electron-35.7.5"
+    "qtwebengine-5.15.19"
   ];
   
   # Unstable канал
-  _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
+  _module.args.upkgs = import inputs.nixpkgs-unstable {
     inherit (pkgs.stdenv.hostPlatform) system;
     inherit (config.nixpkgs) config;
   };
@@ -19,12 +20,11 @@
       };
 
       hyprland = {
-        enable = true; #set this so desktop file is created
+        enable = true;
         withUWSM = false;
       };
 
       dconf.enable = true;
-#      seahorse.enable = true;
       fuse.userAllowOther = true;
 
       adb.enable = true;
@@ -38,90 +38,61 @@
       };
   };
 
-  environment.sessionVariables.LD_LIBRARY_PATH = lib.mkForce 
-    "${pkgs.lib.makeLibraryPath [ pkgs.mysql84 pkgs.stdenv.cc.cc.lib pkgs.zlib pkgs.libGL pkgs.glib ]}:${toString (builtins.getEnv "LD_LIBRARY_PATH")}";
 
-  environment.sessionVariables.PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
-  environment.sessionVariables.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
-  environment.sessionVariables.CHROME_EXECUTABLE = "${pkgs.google-chrome}/bin/google-chrome-stable";
+  environment = {
+    sessionVariables.LD_LIBRARY_PATH = lib.mkForce
+      "${pkgs.lib.makeLibraryPath [ pkgs.mysql84 pkgs.stdenv.cc.cc.lib pkgs.zlib pkgs.libGL pkgs.glib ]}:${toString (builtins.getEnv "LD_LIBRARY_PATH")}";
 
-  environment.systemPackages = with pkgs; [
-    # Playwright
-    (pkgsUnstable.python312Packages.playwright)
-    (pkgsUnstable.playwright-driver.browsers)
+    systemPackages = with pkgs; [
+      # База
+      file-roller
+      nemo-with-extensions
+      google-chrome
+      notepadqq
+      baobab
+      (upkgs.bitwarden-desktop)
+      (upkgs.telegram-desktop)
 
-    # Код
-    (pkgsUnstable.jetbrains.pycharm-professional)
-    (pkgsUnstable.jetbrains.idea-ultimate)
-    (pkgsUnstable.android-studio)
-    (pkgsUnstable.code-cursor)
-    (pkgsUnstable.yaak)
-    dbeaver-bin
+      # Разработка
+      python313
+      python312
+      python310
+      nodejs_24
+      go
+      flutter
+      mysql84
+      postgresql
+      ngrok
+      gcc
+      ninja
 
-    # Офисный пакет
-    libreoffice
-    hunspell
-    hunspellDicts.ru-ru
-    hunspellDicts.en-us
+      # Диагностика системы
+      lm_sensors
+      pciutils
+      usbutils
+      lshw
+      ethtool
+      mesa-demos
+      inxi
+      lsof
 
-    # Рабочее окружение
-    file-roller
-    nemo-with-extensions
-    google-chrome
-    (pkgsUnstable.telegram-desktop)
-    (pkgsUnstable.obsidian)
-    (pkgsUnstable.affine)
-    (pkgsUnstable.bitwarden-desktop)
-    notepadqq
-    baobab
-    
-    # Разработка
-    python313
-    python312
-    python310
-    mysql84
-    gcc
-    postgresql
-    ngrok
-    ninja
-    nodejs_24
-    go
-    flutter
+      # Системные либы
+      libnotify
+      stdenv.cc.cc.lib
+      zlib
+      ffmpeg
+      libGL
+      glib
+      poppler
 
-    # Диагностика системы
-    lm_sensors
-    pciutils
-    usbutils
-    lshw
-    ethtool
-    glxinfo
-    inxi
-    lsof
-    
-    # Системные либы
-    libnotify
-    stdenv.cc.cc.lib
-    zlib
-    ffmpeg
-    libGL
-    glib
-    
-    # PDF
-    poppler
-    
-    # Терминал
-    doxx
-    
-    # Wake On LAN
-    wakeonlan
+      # Файловая система
+      exfatprogs  #exFAT
+      parted
+    ];
 
-    # Файловая система
-    exfatprogs  #exFAT
-    parted
-  ];
-
-  environment.shells = with pkgs; [
-    zsh
-    bash
-  ];
+    shells = with pkgs; [
+      zsh
+      bash
+    ];
+  };
 }

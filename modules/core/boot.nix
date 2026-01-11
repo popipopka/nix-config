@@ -12,6 +12,6 @@
 #      useOSProber = true;
 #    };
 
-#    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = [ "ntfs" ];
   };
 }
