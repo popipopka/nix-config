@@ -1,0 +1,1 @@
+# Здесь должно быть содержимое hardware-configuration.nix
