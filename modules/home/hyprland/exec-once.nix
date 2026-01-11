@@ -15,19 +15,17 @@ in
 
       #---- Apps --------------------------------
       "google-chrome-stable"
-      "telegram-desktop"
-      "nekoray"
+      "Telegram"
+      "AmneziaVPN"
       
       # Daemon's
       "killall -q swww;sleep .5 && swww-daemon && swww img ${stylixImage}"
-#      "hyprnotify -s -f 16"
 
       #---- Other -------------------------------
-#      "dunst"
       "killall -q waybar;sleep .5 && waybar"
 
       #---- OSD ---------------------------------
-#      "sh -c 'rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob'"
+      "sh -c 'rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob'"
 
       #---- Clipboard ---------------------------
       "wl-paste --type text --watch cliphist store"

@@ -26,7 +26,11 @@
 
 
         #---- Telegram ----------------------------
-        "workspace 4 silent, class:(org.telegram.desktop)"
+        "workspace 4 silent, class:^(.*telegram.*)$"
+
+
+        #---- VPN ---------------------------------
+        "workspace 4 silent, title:^(AmneziaVPN)$"
 
 
         #---- Terminal ----------------------------
