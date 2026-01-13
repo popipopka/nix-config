@@ -40,9 +40,6 @@
 
 
   environment = {
-    sessionVariables.LD_LIBRARY_PATH = lib.mkForce
-      "${pkgs.lib.makeLibraryPath [ pkgs.mysql84 pkgs.stdenv.cc.cc.lib pkgs.zlib pkgs.libGL pkgs.glib ]}:${toString (builtins.getEnv "LD_LIBRARY_PATH")}";
-
     systemPackages = with pkgs; [
       # База
       file-roller
@@ -79,10 +76,10 @@
       # Системные либы
       libnotify
       stdenv.cc.cc.lib
-      zlib
+      #zlib
       ffmpeg
-      libGL
-      glib
+      #libGL
+      #glib
       poppler
 
       # Файловая система

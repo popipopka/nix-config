@@ -8,6 +8,7 @@
     ./zsh
     ./bat.nix
     ./btop.nix
+    ./direnv.nix
     ./eza.nix
     ./fastfetch.nix
     ./git.nix
