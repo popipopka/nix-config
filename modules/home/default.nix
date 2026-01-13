@@ -14,6 +14,7 @@
     ./git.nix
     ./gtk.nix
     ./mako.nix
+    ./mime.nix
     ./qt.nix
     ./starship.nix
 #    ./steam.nix
