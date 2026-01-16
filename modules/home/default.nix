@@ -16,6 +16,7 @@
     ./mako.nix
     ./mime.nix
     ./qt.nix
+    ./ssh.nix
     ./starship.nix
 #    ./steam.nix
     ./stylix.nix

@@ -62,6 +62,7 @@
       ngrok
       gcc
       ninja
+      devenv
 
       # Диагностика системы
       lm_sensors

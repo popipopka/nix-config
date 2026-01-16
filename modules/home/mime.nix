@@ -3,7 +3,7 @@ let
   # Определяем переменные для удобства
   fileManager = "nemo.desktop";
   archiver = "org.gnome.FileRoller.desktop";
-  browser = "google-chrome.desktop"
+  browser = "google-chrome.desktop";
 in
 {
   xdg.mimeApps = {

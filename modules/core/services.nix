@@ -12,15 +12,15 @@
     gnome.gnome-keyring.enable = true; # Хранилище паролей и ключей
 
     # SSH
-    openssh = {
-      enable = true; # Enable SSH
-      settings = {
-        PermitRootLogin = "no"; # Prevent root from SSH login
-        PasswordAuthentication = true; #Users can SSH using kb and password
-        KbdInteractiveAuthentication = true;
-      };
-      ports = [ 22 ];
-    };
+    #openssh = {
+    #  enable = true; # Enable SSH
+    #  settings = {
+    #    PermitRootLogin = "no"; # Prevent root from SSH login
+    #    PasswordAuthentication = true; #Users can SSH using kb and password
+    #    KbdInteractiveAuthentication = true;
+    #  };
+    #  ports = [ 22 ];
+    #};
 
     # Мониторинг состояния дисков через SMART
     smartd = {

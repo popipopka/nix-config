@@ -14,10 +14,7 @@ in
 
       push = {
         default = "simple";
-      };
-
-      credential = {
-        helper = "cache --timeout=7200";
+        autoSetupRemote = true;
       };
 
       init = {
@@ -40,7 +37,6 @@ in
     gcl = "git clone";
     gsw = "git switch";
     gswc = "git switch -c";
-    gm = "git merge";
 
     gl = "git log --pretty=format:'%C(yellow)commit %C(auto)%h%d %C(green)(%cr) %C(cyan)<%an> %n%n      %Creset%s%n' --date=relative";
     glg = "git log --graph --pretty=format:'%C(yellow)commit %C(auto)%h%d %C(green)(%cr) %C(cyan)<%an> %n%n      %Creset%s%n' --date=relative";
@@ -51,6 +47,7 @@ in
     ga = "git add";
     grs = "git reset";
     grsh = "git reset --hard";
+    grss = "git reset --soft";
 
     gcm = "git commit -m";
     gca = "git commit --ammend";
@@ -64,6 +61,8 @@ in
     gstp = "git stash pop";
     
     grb = "git rebase";
+    gmr = "git merge";
+
     gcp = "git cherry-pick";
     gcpn = "git cherry-pick -n";
   };
