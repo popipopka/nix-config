@@ -5,6 +5,7 @@
     rofi.enable = false;
     hyprland.enable = false;
     hyprlock.enable = false;
+    fish.enable = false;
 
     qt = {
       enable = true;

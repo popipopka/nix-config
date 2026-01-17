@@ -42,7 +42,6 @@ in
   };
 
   home.shellAliases = {
-    git = "LANG=en_US.UTF-8 git";
     gcl = "git clone";
     gsw = "git switch";
     gswc = "git switch -c";

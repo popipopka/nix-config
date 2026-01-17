@@ -48,7 +48,6 @@ in
       base0F = "#f2cdcd"; # flamingo
     };
 
-
     fonts = {
       emoji = {
         name = "Noto Color Emoji";

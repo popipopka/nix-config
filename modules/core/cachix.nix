@@ -1,6 +1,6 @@
-{lib, username, ...}: {
+{lib, ...}: {
   nix.settings = {
-    trusted-users = [ "root" username ];
+    trusted-users = [ "root" "@wheel" ];
     substituters = lib.mkAfter [
       "https://cache.nixos.org"
       "https://hyprland.cachix.org"
