@@ -82,6 +82,7 @@
       #libGL
       #glib
       poppler
+      grc
 
       # Файловая система
       exfatprogs  #exFAT
@@ -90,6 +91,7 @@
 
     shells = with pkgs; [
       zsh
+      fish
       bash
     ];
   };

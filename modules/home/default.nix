@@ -5,12 +5,13 @@
     ./rofi
     ./waybar
     ./wlogout
-    ./zsh
+#    ./zsh
     ./bat.nix
     ./btop.nix
     ./direnv.nix
     ./eza.nix
     ./fastfetch.nix
+    ./fish.nix
     ./git.nix
     ./gtk.nix
     ./mako.nix
