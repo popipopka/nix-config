@@ -21,7 +21,7 @@
   outputs = { nixpkgs, nixpkgs-unstable, home-manager, stylix, ... }@inputs:
     let
       system = "x86_64-linux";
-      host = "nix";
+      host = "ati";
       username = "belykh";
       profile = "vm";
 
