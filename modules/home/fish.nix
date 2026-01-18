@@ -39,6 +39,10 @@
         name = "fzf-fish";
         src = pkgs.fishPlugins.fzf-fish.src;
       }
+      {
+        name = "fish-bd";
+        src = pkgs.fishPlugins.fish-bd.src;
+      }
     ];
 
     interactiveShellInit = ''
