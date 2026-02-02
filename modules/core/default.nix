@@ -1,22 +1,8 @@
 {
   imports = [
-    ./battery.nix
-    ./boot.nix
-    ./cachix.nix
-    ./fonts.nix
-    ./hardware.nix
-    ./network.nix
-    ./nh.nix
+    #./cachix.nix
+    #./nh.nix
     ./packages.nix
-    ./printing.nix
-    ./sddm.nix
-    ./security.nix
-    ./services.nix
-    ./stylix.nix
-    ./system.nix
     ./user.nix
-    ./virtualisation.nix
-    ./xserver.nix
-    ./zram.nix
   ];
 }

@@ -5,9 +5,6 @@
 
     silent = true;
 
-    enableZshIntegration = true;
-    #enableFishIntegration = true;
-
     config = {
       global = {
         warn_timeout = "0";
