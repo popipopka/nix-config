@@ -1,6 +1,6 @@
-{ host, ... }:
+_:
 let
-  inherit (import ../../hosts/${host}/variables.nix) gitUsername gitEmail;
+  inherit (import ../../variables.nix) gitUsername gitEmail;
 in
 {
   programs.git = {
@@ -54,15 +54,14 @@ in
     gs = "git status --short";
     ga = "git add";
     grs = "git reset";
-    grsh = "git reset --hard";
     grss = "git reset --soft";
+    grsh = "git reset --hard";
 
     gcm = "git commit -m";
     gca = "git commit --ammend";
 
     gpl = "git pull origin";
     gps = "git push origin";
-    gpsu = "git push -u origin main";
     gpsf = "git push origin --force";
     
     gst = "git stash";

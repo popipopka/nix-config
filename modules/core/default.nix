@@ -1,8 +1,10 @@
 {
   imports = [
-    #./cachix.nix
-    #./nh.nix
+    ./documentation.nix
+    ./homebrew.nix
     ./packages.nix
+    ./security.nix
+    ./system.nix
     ./user.nix
   ];
 }

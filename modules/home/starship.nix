@@ -3,9 +3,7 @@
   programs.starship = {
     enable = true;
 
-    #enableZshIntegration = true;
-    #enableBashIntegration = true;
-    #enableFishIntegration = true;
+    enableFishIntegration = true;
 
     settings = {
       add_newline = true;

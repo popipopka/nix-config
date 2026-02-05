@@ -1,7 +1,7 @@
 { pkgs, inputs, username, macbook, ... }:
 {
   imports = [ inputs.home-manager.darwinModules.home-manager ];
-  
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -14,11 +14,12 @@
       home = {
         username = "${username}";
         homeDirectory = "/Users/${username}";
-        stateVersion = "23.11";
+        stateVersion = "25.11";
       };
     };
   };
 
+  programs.fish.enable = true;
   users.users.${username} = {
     home = "/Users/${username}";
 

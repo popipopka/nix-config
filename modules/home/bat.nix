@@ -9,9 +9,7 @@
     };
 
     extraPackages = with pkgs.bat-extras; [
-      batman
-      batpipe
-      batgrep
+      prettybat
     ];
   };
 
@@ -22,7 +20,6 @@
 
   home.shellAliases = {
     cat = "bat";
-    man = "batman";
   };
 }
 

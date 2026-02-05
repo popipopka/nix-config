@@ -13,17 +13,25 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
+
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, ... }:
     let
       system = "aarch64-darwin";
       username = "belykh";
-      macbook = "Egors-Macbook-Pro";
+      macbook = "Egors-MacBook-Pro";
     in {
       darwinConfigurations.${macbook} = nix-darwin.lib.darwinSystem {
+	      system = system;
+
+        specialArgs = { inherit inputs system username; };
+
         modules = [
-          ./variables.nix
-          /modules/core
+          inputs.determinate.darwinModules.default
+          ./modules/core
         ];
       };
     };

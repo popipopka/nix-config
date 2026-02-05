@@ -1,6 +1,8 @@
 { pkgs, inputs, config, lib, ... }: {
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowCollisions = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowCollisions = true;
+  };
 
   environment = {
     systemPackages = with pkgs; [
