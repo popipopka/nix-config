@@ -46,7 +46,12 @@
     ];
 
     interactiveShellInit = ''
+      bass export LANG=en_US.UTF-8
+
       set fish_greeting
+
+      set sponge_delay 5
+      set sponge_successful_exit_codes 0 1 130 148
     '';
   };
 }

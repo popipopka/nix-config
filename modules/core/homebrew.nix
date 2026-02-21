@@ -20,7 +20,7 @@
     enable = true;
     user = "${username}";
 
-    enableRosetta = false; # Пока что не требуется
+    enableRosetta = true;
     autoMigrate = true;
     mutableTaps = true;
   };

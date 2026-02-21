@@ -8,9 +8,7 @@
   determinateNix = {
     enable = true;
 
-
     customSettings = {
-      eval-cores = 0;
       warn-dirty = false;
       lazy-trees = true;
 
