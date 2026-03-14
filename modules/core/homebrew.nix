@@ -12,7 +12,9 @@
     };
 
     taps = [];
-    brews = [];
+    brews = [
+      "node"
+    ];
     casks = [];
   };
 
