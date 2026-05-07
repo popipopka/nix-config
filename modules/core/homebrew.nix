@@ -14,8 +14,11 @@
     taps = [];
     brews = [
       "node"
+      "dive"
     ];
-    casks = [];
+    casks = [
+      "orbstack"
+    ];
   };
 
   nix-homebrew = {

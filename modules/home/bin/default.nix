@@ -1,5 +1,6 @@
 {
   imports = [
-    ./proxycmd.nix
+    ./proxycmd
+    ./spank
   ];
 }
