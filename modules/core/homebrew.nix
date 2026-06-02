@@ -17,7 +17,16 @@
       "dive"
     ];
     casks = [
+      "iterm2"
+      "telegram"
+
       "orbstack"
+
+      "appcleaner"
+      "betterdisplay"
+      "macs-fan-control"
+      "omnidisksweeper"
+      "rectangle"
     ];
   };
 
