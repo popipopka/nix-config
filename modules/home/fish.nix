@@ -8,12 +8,6 @@
   programs.fish = {
     enable = true;
 
-    shellAliases = {
-      sv = "sudo nvim";
-      v = "nvim";
-      c = "clear";
-    };
-
     plugins = [
       {
         name = "done";
@@ -44,6 +38,13 @@
         src = pkgs.fishPlugins.fish-bd.src;
       }
     ];
+
+    shellAliases = {
+      sv = "sudo nvim";
+      v = "nvim";
+      c = "clear";
+    };
+
 
     interactiveShellInit = ''
       bass export LANG=en_US.UTF-8
