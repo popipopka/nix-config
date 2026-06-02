@@ -72,5 +72,11 @@ in
 
     gcp = "git cherry-pick";
     gcpn = "git cherry-pick -n";
+
+    gb = "git branch";
+    gbm = "git branch -m";
+    gbM = "git branch -M";
+    gbd = "git branch -d";
+    gbD = "git branch -D";
   };
 }

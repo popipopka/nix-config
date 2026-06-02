@@ -9,10 +9,11 @@
           owner = "taigrr";
           repo = "spank";
           rev = "v${version}";
-          sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+          sha256 = "sha256-IjliPbxCrjYsGDZMaG+5DD01xkGPf01V4eYU/CM8dDs=";
         };
 
-        vendorHash = null;
+        vendorHash = "sha256-R63lSTQvwZ/zw2ccuwXk6rkuQ0t2Zs4mU3Trh+IxKf4=";
+        doCheck = false;
       })
   ];
 }

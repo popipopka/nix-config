@@ -1,5 +1,5 @@
 { username, inputs, ... }: {
-  imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
+#  imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
 
   homebrew = {
     enable = true;
@@ -21,12 +21,12 @@
     ];
   };
 
-  nix-homebrew = {
-    enable = true;
-    user = "${username}";
-
-    enableRosetta = true;
-    autoMigrate = true;
-    mutableTaps = true;
-  };
+#  nix-homebrew = {
+#    enable = false;
+#    user = "${username}";
+#
+#    enableRosetta = true;
+#    autoMigrate = true;
+#    mutableTaps = true;
+#  };
 }

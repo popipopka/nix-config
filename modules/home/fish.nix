@@ -52,6 +52,8 @@
 
       set sponge_delay 5
       set sponge_successful_exit_codes 0 1 130 148
+
+      eval (/opt/homebrew/bin/brew shellenv)
     '';
   };
 }
