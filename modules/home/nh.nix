@@ -8,4 +8,9 @@
     };
     flake = "/Users/${username}/nix-config";
   };
+
+  home.shellAliases = {
+    nhds = "nh darwin switch";
+    nhca = "nh clean all";
+  };
 }
