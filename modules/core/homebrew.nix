@@ -25,7 +25,6 @@
       "appcleaner"
       "betterdisplay"
       "macs-fan-control"
-      "omnidisksweeper"
       "rectangle"
     ];
   };

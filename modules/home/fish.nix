@@ -55,6 +55,8 @@
       set sponge_successful_exit_codes 0 1 130 148
 
       eval (/opt/homebrew/bin/brew shellenv)
+
+      fish_add_path "/Users/belykh/.bun/bin"
     '';
   };
 }

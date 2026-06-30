@@ -7,8 +7,13 @@
   environment = {
     systemPackages = with pkgs; [
       devenv
+
+      bun
+
       pandoc  # Docs converter
-      poppler # PDF utils
+      typst   # PDF engine for pandoc
+      poppler-utils # PDF utils
+      plantuml
     ];
 
     shells = with pkgs; [

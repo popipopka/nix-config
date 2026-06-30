@@ -73,10 +73,10 @@ in
     gcp = "git cherry-pick";
     gcpn = "git cherry-pick -n";
 
-    gb = "git branch";
-    gbm = "git branch -m";
-    gbM = "git branch -M";
-    gbd = "git branch -d";
-    gbD = "git branch -D";
+    gbr = "git branch";
+    gbrm = "git branch -m";
+    gbrM = "git branch -M";
+    gbrd = "git branch -d";
+    gbrD = "git branch -D";
   };
 }
