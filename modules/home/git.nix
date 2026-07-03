@@ -54,24 +54,29 @@ in
     gs = "git status --short";
     ga = "git add";
     grs = "git reset";
-    grsh = "git reset --hard";
     grss = "git reset --soft";
+    grsh = "git reset --hard";
 
     gcm = "git commit -m";
     gca = "git commit --ammend";
 
     gpl = "git pull origin";
     gps = "git push origin";
-    gpsu = "git push -u origin main";
     gpsf = "git push origin --force";
-    
+
     gst = "git stash";
     gstp = "git stash pop";
-    
+
     grb = "git rebase";
     gmr = "git merge";
 
     gcp = "git cherry-pick";
     gcpn = "git cherry-pick -n";
+
+    gbr = "git branch";
+    gbrm = "git branch -m";
+    gbrM = "git branch -M";
+    gbrd = "git branch -d";
+    gbrD = "git branch -D";
   };
 }

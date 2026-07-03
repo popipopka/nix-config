@@ -25,12 +25,11 @@
 
                         swap = {
                             name = "swap";
-                            size = "12G";
+                            size = "2G";
                             type = "8200";
 
                             content = {
                                 type = "swap";
-                                resumeDevice=true;
                             };
                         };
 
@@ -39,19 +38,22 @@
                             content = {
                                 type = "btrfs";
                                 extraArgs = [ "-f" ];
-                                mountpoint = "/";
 
                                 subvolumes = {
-                                    "/home" = {
-                                        mountOptions = [ "compress=zstd" ];
-                                        mountpoint = "/home";
+                                    "/@" = {
+                                        mountOptions = [ "compress=zstd" "noatime" ];
+                                        mountpoint = "/";
+                                    };
+                                    "/@root" = {
+                                        mountOptions = [ "compress=zstd" "noatime" ];
+                                        mountpoint = "/root";
                                     };
                                     "/nix" = {
                                         mountOptions = [ "compress=zstd" "noatime" ];
                                         mountpoint = "/nix";
                                     };
                                     "/var" = {
-                                        mountOptions = [ "compress=zstd" "noatime" "autodefrag" ];
+                                        mountOptions = [ "compress=zstd" "noatime" ];
                                         mountpoint = "/var";
                                     };
                                 };
@@ -66,7 +68,7 @@
             "/tmp" = {
                 device = "tmpfs";
                 fsType = "tmpfs";
-                mountOptions = [ "size=1G" "noexec" "nosuid" "mode=1777" "relatime" ];
+                mountOptions = [ "size=2G" "noexec" "nodev" "nosuid" "mode=1777" "relatime" ];
             };
         };
     };

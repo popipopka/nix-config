@@ -1,4 +1,7 @@
 { host, ... }:
+let
+  inherit (import ../../hosts/${host}/variables.nix) timeZone;
+in
 {
   system.stateVersion = "23.11"; # Do not change!
 
@@ -15,7 +18,7 @@
   };
 
   # Локализация и часовой пояс
-  time.timeZone = "Europe/Moscow";
+  time.timeZone = timeZone;
 
   i18n.supportedLocales = [
     "en_US.UTF-8/UTF-8"
@@ -29,18 +32,7 @@
     LC_PAPER = "ru_RU.UTF-8";       # Формат бумаги
     LC_MEASUREMENT = "ru_RU.UTF-8"; # Метрическая система измерений
     LC_TELEPHONE = "ru_RU.UTF-8";   # Формат телефонных номеров
-    LANG = "ru_RU.UTF-8";           # Основной язык системы
     LC_ADDRESS = "ru_RU.UTF-8";     # Формат адресов
-
-    # en_US
-    LC_CTYPE = "en_US.UTF-8";       # Классификация символов (регистр, типы символов)
-    LC_NUMERIC = "en_US.UTF-8";     # Формат чисел (разделители, десятичные точки)
-    LC_MESSAGES = "en_US.UTF-8";    # Язык системных сообщений и диалогов
-  };
-
-  # Переменные окружения
-  environment.variables = {
-    NIXOS_OZONE_WL = "1";
   };
 
   # Консольная раскладка
