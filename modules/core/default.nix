@@ -1,5 +1,6 @@
 {
   imports = [
+    ./determinate.nix
     ./documentation.nix
     ./env.nix
     ./homebrew.nix

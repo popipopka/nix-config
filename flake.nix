@@ -15,10 +15,10 @@
     };
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+#    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
     let
       system = "aarch64-darwin";
       username = "belykh";
