@@ -7,6 +7,12 @@
                 content = {
                     type = "gpt";
                     partitions = {
+                        bios = {
+                            priority = 0;
+                            size = "1M";
+                            type = "EF02";
+                        };
+
                         ESP = {
                             priority = 1;
                             name = "ESP";

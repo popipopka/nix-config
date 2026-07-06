@@ -1,8 +1,10 @@
 { ... }:
 {
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+    };
 
     kernel.sysctl = {
       "fs.file-max" = 2097152;
