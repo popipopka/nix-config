@@ -22,6 +22,9 @@
 
   users.users.root = {
     shell = pkgs.fish;
+    openssh.authorizedKeys.keyFiles = [
+      ../../hosts/${host}/ssh-public-key.pub
+    ];
   };
 
   # Ограничение доступа к nix

@@ -1,32 +1,22 @@
+{ host, ... }:
+
+let
+    variables = import ./hosts/${host}/variables.nix;
+in
 {
     disko.devices = {
         disk = {
             main = {
                 type = "disk";
-                device = "/dev/sda";
+                device = variables.disk;
                 content = {
                     type = "gpt";
                     partitions = {
                         bios = {
                             priority = 0;
-                            size = "1M";
-                            type = "EF02";
-                        };
-
-                        ESP = {
-                            priority = 1;
-                            name = "ESP";
-                            type = "ef00";
-
                             start = "1M";
-                            end = "512M";
-
-                            content = {
-                                type = "filesystem";
-                                format = "vfat";
-                                mountpoint = "/boot";
-                                mountOptions = [ "umask=0077" ];
-                            };
+                            end = "2M";
+                            type = "EF02";
                         };
 
                         swap = {
