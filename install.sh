@@ -6,7 +6,7 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HARDWARE_CONFIG="./hosts/server/hardware.nix"
 VARIABLES_FILE="./hosts/server/variables.nix"
 ROOT_SSH_PUBLIC_KEY_FILE="./hosts/server/ssh-public-key.pub"
-DEFAULT_ROOT_SSH_PUBLIC_KEY_SOURCE="${HOME}/.ssh/id_ed25519.pub"
+DEFAULT_ROOT_SSH_PUBLIC_KEY_SOURCE="${HOME}/.ssh/main.pub"
 
 cd "${REPO_DIR}"
 
