@@ -14,33 +14,6 @@
         symbol = " ";
       };
 
-      java = {
-        symbol = "  ";
-        style = "red";
-      };
-      kotlin = {
-        symbol = "  ";
-        style = "blue";
-      };
-      python = {
-        symbol = "  ";
-        style = "yellow";
-      };
-      c = {
-        symbol = "  ";
-        style = "149";
-        detect_extensions = ["c" "h" "cpp"];
-      };
-
-      gradle = {
-        symbol = "  ";
-        style = "bright-cyan";
-      };
-      cmake = {
-        symbol = "󰔶  ";
-        style = "blue";
-      };
-
       username = {
         style_user = "bold cyan";
         show_always = true;

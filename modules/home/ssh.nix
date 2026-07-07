@@ -18,6 +18,13 @@
         identityFile = "~/.ssh/git";
         addKeysToAgent = "yes";
       };
+
+      "*" = {
+        serverAliveInterval = 30;
+        serverAliveCountMax = 3;
+        identityFile = "~/.ssh/main";
+        addKeysToAgent = "yes";
+      };
     };
   };
 }
