@@ -37,6 +37,9 @@ in
         "git@gitlab.com:" = {
           insteadOf = "https://gitlab.com/";
         };
+        "git@gitlab.fittin.ai:" = {
+           insteadOf = "https://gitlab.fittin.ai/";
+        };
       };
     };
   };

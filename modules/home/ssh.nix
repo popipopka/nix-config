@@ -19,6 +19,13 @@
         addKeysToAgent = "yes";
       };
 
+      "gitlab.fittin.ai" = {
+        hostname = "gitlab.fittin.ai";
+        user = "git";
+        identityFile = "~/.ssh/git";
+        addKeysToAgent = "yes";
+      };
+
       "*" = {
         serverAliveInterval = 30;
         serverAliveCountMax = 3;

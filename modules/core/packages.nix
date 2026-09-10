@@ -6,8 +6,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      devenv
-
       bun
 
       pandoc  # Docs converter
