@@ -4,33 +4,33 @@
     enable = true;
     enableDefaultConfig = false;
     
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        hostname = "github.com";
-        user = "git";
-        identityFile = "~/.ssh/git";
-        addKeysToAgent = "yes";
+        HostName = "github.com";
+        User = "git";
+        IdentityFile = "~/.ssh/git";
+        AddKeysToAgent = "yes";
       };
 
       "gitlab.com" = {
-        hostname = "gitlab.com";
-        user = "git";
-        identityFile = "~/.ssh/git";
-        addKeysToAgent = "yes";
+        HostName = "gitlab.com";
+        User = "git";
+        IdentityFile = "~/.ssh/git";
+        AddKeysToAgent = "yes";
       };
 
       "gitlab.fittin.ai" = {
-        hostname = "gitlab.fittin.ai";
-        user = "git";
-        identityFile = "~/.ssh/git";
-        addKeysToAgent = "yes";
+        HostName = "gitlab.fittin.ai";
+        User = "git";
+        IdentityFile = "~/.ssh/git";
+        AddKeysToAgent = "yes";
       };
 
       "*" = {
-        serverAliveInterval = 30;
-        serverAliveCountMax = 3;
-        identityFile = "~/.ssh/main";
-        addKeysToAgent = "yes";
+        ServerAliveInterval = 30;
+        ServerAliveCountMax = 3;
+        IdentityFile = "~/.ssh/main";
+        AddKeysToAgent = "yes";
       };
     };
   };
