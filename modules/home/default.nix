@@ -3,7 +3,6 @@
     ./bin
     ./devenv
     ./bat.nix
-    ./direnv.nix
     ./eza.nix
     ./fish.nix
     ./fonts.nix

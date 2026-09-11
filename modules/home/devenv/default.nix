@@ -9,6 +9,7 @@
   home.shellAliases = {
     de = "devenv";
     des = "devenv shell";
+    deu = "devenv update";
     dei = ''
       sh -c '
         set -eu
