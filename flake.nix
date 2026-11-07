@@ -15,7 +15,8 @@
     };
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-#    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:

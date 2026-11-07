@@ -56,7 +56,8 @@
 
       eval (/opt/homebrew/bin/brew shellenv)
 
-      fish_add_path "/Users/belykh/.bun/bin"
+      fish_add_path "$HOME/.bun/bin"
+      fish_add_path "$HOME/.local/bin"
     '';
   };
 }

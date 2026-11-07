@@ -1,4 +1,4 @@
-{ pkgs, username, ...}:
+{ username, ...}:
 {
   programs.nh = {
     enable = true;
@@ -10,7 +10,7 @@
   };
 
   home.shellAliases = {
-    nhds = "nh darwin switch";
+    nhs = "nh darwin switch";
     nhca = "nh clean all";
   };
 }

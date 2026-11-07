@@ -46,8 +46,4 @@
         write_yaml > devenv.yaml
       ' dei'';
   };
-
-  programs.fish.interactiveShellInit = ''
-    devenv hook fish | source
-  '';
 }
