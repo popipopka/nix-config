@@ -26,6 +26,7 @@
           specialArgs = {
             inherit inputs;
             inherit host;
+            settings = import ./profiles/${host}/settings.nix;
           };
           modules = [
             ./profiles/${host}

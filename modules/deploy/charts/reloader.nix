@@ -1,0 +1,15 @@
+{ ... }:
+{
+  apiVersion = "helm.cattle.io/v1";
+  kind = "HelmChart";
+  metadata = {
+    name = "reloader";
+    namespace = "kube-system";
+  };
+  spec = {
+    repo = "https://stakater.github.io/stakater-charts";
+    chart = "reloader";
+    targetNamespace = "reloader";
+    createNamespace = true;
+  };
+}

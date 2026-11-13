@@ -6,5 +6,6 @@
 
     ../../hosts/${host}/hardware.nix
     ../../modules/core
+    ../../modules/deploy
   ];
 }
