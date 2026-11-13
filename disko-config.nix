@@ -59,13 +59,5 @@ in
                 };
             };
         };
-
-        nodev = {
-            "/tmp" = {
-                device = "tmpfs";
-                fsType = "tmpfs";
-                mountOptions = [ "size=2G" "noexec" "nodev" "nosuid" "mode=1777" "relatime" ];
-            };
-        };
     };
 }
