@@ -1,2 +1,4 @@
 .idea
 hosts/nix/hardware.nix
+hosts/worker/k3s-token-file
+hosts/worker/k3s-token-file.*

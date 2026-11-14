@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ host, ... }:
 {
   programs.starship = {
     enable = true;
@@ -9,7 +9,7 @@
     settings = {
       add_newline = true;
 
-      format = ''[server](italic red) $directory$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$cmd_duration$line_break$character'';
+      format = ''[${host}](italic red) $directory$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$cmd_duration$line_break$character'';
 
       username = {
         style_user = "bold cyan";

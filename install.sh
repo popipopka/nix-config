@@ -3,10 +3,15 @@
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-HARDWARE_CONFIG="./hosts/server/hardware.nix"
-VARIABLES_FILE="./hosts/server/variables.nix"
-ROOT_SSH_PUBLIC_KEY_FILE="./hosts/server/ssh-public-key.pub"
-DEFAULT_ROOT_SSH_PUBLIC_KEY_SOURCE="${HOME}/.ssh/main.pub"
+read -rp "Profile to install (server/worker) [server]: " HOST
+HOST="${HOST:-server}"
+case "${HOST}" in
+  server|worker) ;;
+  *) echo "Expected server or worker." >&2; exit 1 ;;
+esac
+HARDWARE_CONFIG="./hosts/${HOST}/hardware.nix"
+VARIABLES_FILE="./hosts/${HOST}/variables.nix"
+SSH_PRIVATE_KEY="${HOME}/.ssh/main"
 
 cd "${REPO_DIR}"
 
@@ -19,86 +24,36 @@ fi
 
 TARGET_HOST="root@${SERVER_IP}"
 
-read -rp "Interface IPv4 address [${SERVER_IP}]: " NETWORK_ADDRESS
-NETWORK_ADDRESS="${NETWORK_ADDRESS:-${SERVER_IP}}"
-read -rp "Network interface [ens3]: " NETWORK_INTERFACE
-NETWORK_INTERFACE="${NETWORK_INTERFACE:-ens3}"
-read -rp "Prefix length for ${NETWORK_ADDRESS} [32]: " NETWORK_PREFIX
-NETWORK_PREFIX="${NETWORK_PREFIX:-32}"
-read -rp "IPv4 gateway: " NETWORK_GATEWAY
+read -rp "Build on (remote/local) [remote]: " BUILD_ON
+BUILD_ON="${BUILD_ON:-remote}"
+case "${BUILD_ON}" in
+  remote|local) ;;
+  *) echo "Expected remote or local." >&2; exit 1 ;;
+esac
 
-valid_ipv4() {
-  local octet
-  local -a octets
-  [[ "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] || return 1
-  IFS=. read -r -a octets <<< "$1"
-  for octet in "${octets[@]}"; do
-    [[ ${#octet} -le 3 ]] && (( 10#$octet <= 255 )) || return 1
-  done
-}
-
-if ! valid_ipv4 "$NETWORK_ADDRESS" || ! valid_ipv4 "$NETWORK_GATEWAY"; then
-  printf 'Interface address and gateway must be valid IPv4 addresses.\n' >&2
-  exit 1
-fi
-if [[ ! "$NETWORK_INTERFACE" =~ ^[a-zA-Z0-9_.:-]+$ ]] ||
-   [[ ! "$NETWORK_PREFIX" =~ ^([0-9]|[12][0-9]|3[0-2])$ ]]; then
-  printf 'Invalid interface name or IPv4 prefix (expected 0-32).\n' >&2
+if [[ ! -r "${SSH_PRIVATE_KEY}" ]]; then
+  echo "SSH private key must be readable: ${SSH_PRIVATE_KEY}" >&2
   exit 1
 fi
 
-read -rp "Target disk [/dev/sda]: " TARGET_DISK
-TARGET_DISK="${TARGET_DISK:-/dev/sda}"
+echo "Installing ${HOST} on ${TARGET_HOST}; disk and network settings come from ${VARIABLES_FILE}."
+echo "WARNING: installation will erase the target disk configured in ${VARIABLES_FILE}."
 
-read -rp "Root SSH public key file [${DEFAULT_ROOT_SSH_PUBLIC_KEY_SOURCE}]: " ROOT_SSH_PUBLIC_KEY_SOURCE
-ROOT_SSH_PUBLIC_KEY_SOURCE="${ROOT_SSH_PUBLIC_KEY_SOURCE:-${DEFAULT_ROOT_SSH_PUBLIC_KEY_SOURCE}}"
-ROOT_SSH_PUBLIC_KEY_SOURCE="${ROOT_SSH_PUBLIC_KEY_SOURCE/#\~/${HOME}}"
-
-if [[ ! -r "${ROOT_SSH_PUBLIC_KEY_SOURCE}" ]]; then
-  echo "Root SSH public key file is required and must be readable: ${ROOT_SSH_PUBLIC_KEY_SOURCE}"
-  exit 1
+INSTALL_EXTRA_ARGS=()
+if [[ -f "./hosts/${HOST}/part-of-install.sh" ]]; then
+  source "./hosts/${HOST}/part-of-install.sh"
 fi
-
-SSH_PRIVATE_KEY="${ROOT_SSH_PUBLIC_KEY_SOURCE%.pub}"
-if [[ "${SSH_PRIVATE_KEY}" == "${ROOT_SSH_PUBLIC_KEY_SOURCE}" || ! -r "${SSH_PRIVATE_KEY}" ]]; then
-  echo "Matching SSH private key must exist next to the .pub file: ${SSH_PRIVATE_KEY}"
-  exit 1
-fi
-
-echo "Target host: ${TARGET_HOST}"
-echo "Target disk: ${TARGET_DISK}"
-echo "Network: ${NETWORK_INTERFACE} ${NETWORK_ADDRESS}/${NETWORK_PREFIX}, gateway ${NETWORK_GATEWAY}"
-echo "Root SSH public key file: ${ROOT_SSH_PUBLIC_KEY_SOURCE}"
-
-read -rp "Install? [y/N] " confirmation
-
-if [[ "${confirmation}" != "y" ]]; then
-  echo "Aborted."
-  exit 1
-fi
-
-escaped_target_disk="$(printf '%s\n' "${TARGET_DISK}" | sed 's/[\/&|]/\\&/g')"
-tmp_variables_file="$(mktemp "${VARIABLES_FILE}.XXXXXX")"
-
-sed -e "s|^[[:space:]]*disk = \".*\";|  disk = \"${escaped_target_disk}\";|" \
-  -e "s|^[[:space:]]*interface = .*;|    interface = \"${NETWORK_INTERFACE}\";|" \
-  -e "s|^[[:space:]]*address = .*;|    address = \"${NETWORK_ADDRESS}\";|" \
-  -e "s|^[[:space:]]*prefixLength = .*;|    prefixLength = ${NETWORK_PREFIX};|" \
-  -e "s|^[[:space:]]*gateway = .*;|    gateway = \"${NETWORK_GATEWAY}\";|" \
-  "${VARIABLES_FILE}" > "${tmp_variables_file}"
-
-mv "${tmp_variables_file}" "${VARIABLES_FILE}"
-cp "${ROOT_SSH_PUBLIC_KEY_SOURCE}" "${ROOT_SSH_PUBLIC_KEY_FILE}"
 
 nix run github:nix-community/nixos-anywhere -- \
   -i "${SSH_PRIVATE_KEY}" \
   --ssh-option IdentitiesOnly=yes \
   --ssh-option IdentityAgent=none \
   --no-disko-deps \
+  ${INSTALL_EXTRA_ARGS[@]+"${INSTALL_EXTRA_ARGS[@]}"} \
   --generate-hardware-config nixos-generate-config "${HARDWARE_CONFIG}" \
-  --flake .#server \
+  --flake ".#${HOST}" \
   --target-host "${TARGET_HOST}" \
-  --build-on remote
+  --build-on "${BUILD_ON}"
 
 SSH_OPTIONS=(-i "${SSH_PRIVATE_KEY}" -o IdentitiesOnly=yes -o ConnectTimeout=5)
 
@@ -116,18 +71,24 @@ if [[ "${ssh_ready}" != true ]]; then
   exit 1
 fi
 
-ssh "${SSH_OPTIONS[@]}" "${TARGET_HOST}" '
+ssh "${SSH_OPTIONS[@]}" "${TARGET_HOST}" 'bash -s' <<'REMOTE_SCRIPT'
   set -eu
-  if [ ! -d /root/nix-config ]; then
+  if [ ! -d /root/nix-config/.git ]; then
+    clone_dir=$(mktemp -d)
     GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null \
-      git clone -b server https://github.com/popipopka/nix-config.git /root/nix-config
+      git clone -b server https://github.com/popipopka/nix-config.git "$clone_dir"
+    mkdir -p /root/nix-config
+    cp -a "$clone_dir/." /root/nix-config/
+    rm -rf "$clone_dir"
   else
     git -C /root/nix-config rev-parse --is-inside-work-tree >/dev/null
   fi
-'
+REMOTE_SCRIPT
+
+ssh "${SSH_OPTIONS[@]}" "${TARGET_HOST}" "mkdir -p /root/nix-config/hosts/${HOST}"
 
 scp "${SSH_OPTIONS[@]}" \
-  "${VARIABLES_FILE}" "${HARDWARE_CONFIG}" "${ROOT_SSH_PUBLIC_KEY_FILE}" \
-  "${TARGET_HOST}:/root/nix-config/hosts/server/"
+  "${VARIABLES_FILE}" "${HARDWARE_CONFIG}" \
+  "${TARGET_HOST}:/root/nix-config/hosts/${HOST}/"
 
 echo "Server configuration saved to /root/nix-config."

@@ -1,3 +1,4 @@
+{ host, ... }:
 {
   imports = [
     ./boot.nix
@@ -7,9 +8,9 @@
     ./nh.nix
     ./packages.nix
     ./services.nix
+    ./ssh.nix
     ./system.nix
     ./user.nix
-    ./virtualisation.nix
     ./zram.nix
   ];
 }

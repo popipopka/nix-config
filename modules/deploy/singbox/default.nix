@@ -1,5 +1,16 @@
 { settings, ... }:
 {
+  networking.firewall = {
+    allowedTCPPorts = [
+      1443
+      2443
+    ];
+    allowedUDPPorts = [
+      443
+      3443
+    ];
+  };
+
   services.k3s.manifests = {
     cert-manager.content = import ../charts/cert-manager.nix {};
     reloader.content = import ../charts/reloader.nix {};

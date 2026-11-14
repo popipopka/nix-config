@@ -1,12 +1,6 @@
 {
-  # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "popipopka";
-  gitEmail = "eg.belykh@yandex.ru";
+  timeZone = "Europe/Moscow";
 
-  # Server location timezone
-  timeZone = "Europe/Berlin";
-
-  # Primary disk used by disko and GRUB.
   disk = "/dev/vda";
 
   network = {
@@ -15,6 +9,10 @@
     prefixLength = 32;
     gateway = "GATEWAY_IPV4";
   };
+
+  k3s.workersAddr = [
+    "WORKER_IPV4"
+  ];
 
   singbox = {
     enabled = false;
@@ -26,4 +24,6 @@
       usersSecretId = "SECRET_ID";
     };
   };
+
+  vkTurnProxy.enabled = false;
 }

@@ -1,11 +1,13 @@
-{ inputs, host, ... }:
+{ inputs, ... }:
 {
   imports = [
     inputs.disko.nixosModules.disko
     ../../disko-config.nix
 
-    ../../hosts/${host}/hardware.nix
+    ./hardware.nix
     ../../modules/core
     ../../modules/deploy
+    
+    ./virtualisation.nix
   ];
 }

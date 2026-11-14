@@ -18,9 +18,9 @@
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
-      host = "server";
 
-      mkNixosConfig =
+
+      mkNixosConfig = host:
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
@@ -29,13 +29,14 @@
             settings = import ./hosts/${host}/variables.nix;
           };
           modules = [
-            ./profiles/${host}
+            ./hosts/${host}
           ];
         };
 
     in {
       nixosConfigurations = {
-        server = mkNixosConfig;
+        server = mkNixosConfig "server";
+        worker = mkNixosConfig "worker";
       };
     };
 }

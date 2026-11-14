@@ -1,4 +1,5 @@
 { ... }:
+[
 {
   apiVersion = "v1";
   kind = "Service";
@@ -41,3 +42,25 @@
     ];
   };
 }
+
+{
+  apiVersion = "v1";
+  kind = "Service";
+  metadata = {
+    name = "singbox-vk-turn";
+    namespace = "singbox";
+  };
+  spec = {
+    type = "ClusterIP";
+    selector.app = "singbox";
+    ports = [
+      {
+        name = "hysteria2-vk-turn";
+        protocol = "UDP";
+        port = 4443;
+        targetPort = 4443;
+      }
+    ];
+  };
+}
+]

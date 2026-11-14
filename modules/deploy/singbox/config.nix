@@ -68,6 +68,19 @@
             ];
           };
         }
+        {
+          type = "hysteria2";
+          tag = "hy2-vk-turn-in";
+          listen = "::";
+          listen_port = 4443;
+          tls = {
+            enabled = true;
+            server_name = settings.singbox.domain;
+            certificate_path = "/etc/sing-box/tls.crt";
+            key_path = "/etc/sing-box/tls.key";
+          };
+          masquerade = "https://azbyka.ru/";
+        }
       ];
       outbounds = [
         {
