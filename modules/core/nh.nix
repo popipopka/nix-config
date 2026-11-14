@@ -9,4 +9,9 @@
 
     flake = "/root/nix-config";
   };
+
+  environment.shellAliases = {
+    nhs = "nh os switch --bypass-root-check";
+    nhca = "nh clean all";
+  };
 }

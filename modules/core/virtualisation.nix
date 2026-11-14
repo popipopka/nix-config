@@ -30,6 +30,7 @@
     ];
     extraFlags = [
       "--write-kubeconfig-mode=600"
+      "--service-node-port-range=443-32767"
     ];
   };
 }
