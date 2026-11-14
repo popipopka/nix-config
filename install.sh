@@ -59,6 +59,12 @@ if [[ ! -r "${ROOT_SSH_PUBLIC_KEY_SOURCE}" ]]; then
   exit 1
 fi
 
+SSH_PRIVATE_KEY="${ROOT_SSH_PUBLIC_KEY_SOURCE%.pub}"
+if [[ "${SSH_PRIVATE_KEY}" == "${ROOT_SSH_PUBLIC_KEY_SOURCE}" || ! -r "${SSH_PRIVATE_KEY}" ]]; then
+  echo "Matching SSH private key must exist next to the .pub file: ${SSH_PRIVATE_KEY}"
+  exit 1
+fi
+
 echo "Target host: ${TARGET_HOST}"
 echo "Target disk: ${TARGET_DISK}"
 echo "Network: ${NETWORK_INTERFACE} ${NETWORK_ADDRESS}/${NETWORK_PREFIX}, gateway ${NETWORK_GATEWAY}"
@@ -85,7 +91,43 @@ mv "${tmp_variables_file}" "${VARIABLES_FILE}"
 cp "${ROOT_SSH_PUBLIC_KEY_SOURCE}" "${ROOT_SSH_PUBLIC_KEY_FILE}"
 
 nix run github:nix-community/nixos-anywhere -- \
+  -i "${SSH_PRIVATE_KEY}" \
+  --ssh-option IdentitiesOnly=yes \
+  --ssh-option IdentityAgent=none \
   --no-disko-deps \
   --generate-hardware-config nixos-generate-config "${HARDWARE_CONFIG}" \
   --flake .#server \
-  --target-host "${TARGET_HOST}"
+  --target-host "${TARGET_HOST}" \
+  --build-on remote
+
+SSH_OPTIONS=(-i "${SSH_PRIVATE_KEY}" -o IdentitiesOnly=yes -o ConnectTimeout=5)
+
+echo "Waiting for SSH after installation..."
+ssh_ready=false
+for attempt in {1..30}; do
+  if ssh "${SSH_OPTIONS[@]}" "${TARGET_HOST}" true; then
+    ssh_ready=true
+    break
+  fi
+  sleep 2
+done
+if [[ "${ssh_ready}" != true ]]; then
+  echo "SSH unavailable; repository and installation files were not copied."
+  exit 1
+fi
+
+ssh "${SSH_OPTIONS[@]}" "${TARGET_HOST}" '
+  set -eu
+  if [ ! -d /root/nix-config ]; then
+    GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_SYSTEM=/dev/null \
+      git clone -b server https://github.com/popipopka/nix-config.git /root/nix-config
+  else
+    git -C /root/nix-config rev-parse --is-inside-work-tree >/dev/null
+  fi
+'
+
+scp "${SSH_OPTIONS[@]}" \
+  "${VARIABLES_FILE}" "${HARDWARE_CONFIG}" "${ROOT_SSH_PUBLIC_KEY_FILE}" \
+  "${TARGET_HOST}:/root/nix-config/hosts/server/"
+
+echo "Server configuration saved to /root/nix-config."

@@ -30,14 +30,7 @@ in
         conflictStyle = "diff3";
       };
 
-      url = {
-        "git@github.com:" = {
-          insteadOf = "https://github.com/";
-        };
-        "git@gitlab.com:" = {
-          insteadOf = "https://gitlab.com/";
-        };
-      };
+
     };
   };
 

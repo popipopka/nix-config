@@ -4,12 +4,6 @@
   services = {
     fstrim.enable = true; # Оптимизация SSD
 
-    # Мониторинг состояния дисков через SMART
-    smartd = {
-      enable = true;
-      autodetect = true;
-    };
-
     # BTRFS
     btrfs.autoScrub = {
       enable = true;
