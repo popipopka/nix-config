@@ -16,7 +16,7 @@
   vkTurnProxy = {
     enabled = false;
 
-    connectAddr = "singbox-vk.singbox.svc.cluster.local:4443";
+    connectAddr = "singbox-vk-turn.singbox.svc.cluster.local:4443";
   };
 
   singbox.enabled = false;

@@ -71,7 +71,7 @@
       ] ++ (if settings.singbox.proxy.vkTurn or false then [
         {
           type = "hysteria2";
-          tag = "hy2-vk-turn-in";
+          tag = "vk-turn-in";
           listen = "::";
           listen_port = 4443;
           tls = {
