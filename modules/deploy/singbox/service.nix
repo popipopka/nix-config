@@ -1,4 +1,4 @@
-{ ... }:
+{ settings, ... }:
 [
 {
   apiVersion = "v1";
@@ -42,7 +42,7 @@
     ];
   };
 }
-
+] ++ (if settings.singbox.proxy.vkTurn or false then [
 {
   apiVersion = "v1";
   kind = "Service";
@@ -63,4 +63,4 @@
     ];
   };
 }
-]
+] else [])

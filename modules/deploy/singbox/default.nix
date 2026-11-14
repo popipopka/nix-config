@@ -15,7 +15,7 @@
     cert-manager.content = import ../charts/cert-manager.nix {};
     reloader.content = import ../charts/reloader.nix {};
     singbox-namespace.content = import ./namespace.nix {};
-    singbox-service.content = import ./service.nix {};
+    singbox-service.content = import ./service.nix { inherit settings; };
     bitwarden-operator.content = import ../charts/bitwarden.nix {};
     singbox-deployment.content = import ./deployment.nix { inherit settings; };
     singbox-config.content = import ./config.nix { inherit settings; };

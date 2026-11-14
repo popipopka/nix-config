@@ -18,6 +18,8 @@
     enabled = false;
     domain = "DOMAIN_NAME";
 
+    proxy.vkTurn = false;
+
     bitwarden = {
       accessToken = "ACCESS_TOKEN";
       organizationId = "ORG_ID";

@@ -68,6 +68,7 @@
             ];
           };
         }
+      ] ++ (if settings.singbox.proxy.vkTurn or false then [
         {
           type = "hysteria2";
           tag = "hy2-vk-turn-in";
@@ -81,7 +82,8 @@
           };
           masquerade = "https://azbyka.ru/";
         }
-      ];
+      ] else []);
+      
       outbounds = [
         {
           type = "direct";
