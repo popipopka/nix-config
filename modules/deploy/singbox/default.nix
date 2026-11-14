@@ -1,6 +1,7 @@
 { settings, ... }:
 {
   services.k3s.manifests = {
+    cert-manager.content = import ../charts/cert-manager.nix {};
     reloader.content = import ../charts/reloader.nix {};
     singbox-namespace.content = import ./namespace.nix {};
     singbox-service.content = import ./service.nix {};

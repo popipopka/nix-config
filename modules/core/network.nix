@@ -20,7 +20,7 @@ in
           prefixLength = 0;
           via = network.gateway;
           options = {
-            onlink = true;
+            onlink = "";
             src = network.address;
           };
         }

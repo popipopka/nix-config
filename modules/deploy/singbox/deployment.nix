@@ -7,7 +7,7 @@
       name = "singbox";
       namespace = "singbox";
       annotations = {
-        "secret.reloader.stakater.com/reload" = "singbox-users";
+        "secret.reloader.stakater.com/reload" = "singbox-users,singbox-tls";
       };
       labels = {
         app = "singbox";
@@ -75,12 +75,20 @@
               volumeMounts = [
                 {
                   name = "ready-config";
-                  mountPath = "/etc/sing-box";
+                  mountPath = "/etc/sing-box/config.json";
+                  subPath = "config.json";
                   readOnly = true;
                 }
                 {
                   name = "tls";
-                  mountPath = "/etc/sing-box/tls";
+                  mountPath = "/etc/sing-box/tls.crt";
+                  subPath = "tls.crt";
+                  readOnly = true;
+                }
+                {
+                  name = "tls";
+                  mountPath = "/etc/sing-box/tls.key";
+                  subPath = "tls.key";
                   readOnly = true;
                 }
               ];
@@ -97,15 +105,11 @@
             }
             {
               name = "config";
-              configMap = {
-                name = "singbox";
-              };
+              configMap.name = "singbox";
             }
             {
               name = "tls";
-              secret = {
-                secretName = "singbox-tls";
-              };
+              secret.secretName = "singbox-tls";
             }
           ];
         };

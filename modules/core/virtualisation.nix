@@ -25,8 +25,6 @@
     enable = true;
     role = "server";
     disable = [
-      "traefik"
-      "servicelb"
       "local-storage"
       "metrics-server"
     ];

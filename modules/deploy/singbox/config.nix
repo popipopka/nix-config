@@ -21,8 +21,8 @@
           tls = {
             enabled = true;
             server_name = settings.singbox.domain;
-            certificate_path = "/etc/sing-box/tls/tls.crt";
-            key_path = "/etc/sing-box/tls/tls.key";
+            certificate_path = "/etc/sing-box/tls.crt";
+            key_path = "/etc/sing-box/tls.key";
           };
           masquerade = "https://azbyka.ru/";
         }
@@ -35,8 +35,8 @@
           tls = {
             enabled = true;
             server_name = settings.singbox.domain;
-            certificate_path = "/etc/sing-box/tls/tls.crt";
-            key_path = "/etc/sing-box/tls/tls.key";
+            certificate_path = "/etc/sing-box/tls.crt";
+            key_path = "/etc/sing-box/tls.key";
           };
         }
         {
@@ -47,8 +47,8 @@
           tls = {
             enabled = true;
             server_name = settings.singbox.domain;
-            certificate_path = "/etc/sing-box/tls/tls.crt";
-            key_path = "/etc/sing-box/tls/tls.key";
+            certificate_path = "/etc/sing-box/tls.crt";
+            key_path = "/etc/sing-box/tls.key";
           };
         }
         {
@@ -61,8 +61,8 @@
           tls = {
             enabled = true;
             server_name = settings.singbox.domain;
-            certificate_path = "/etc/sing-box/tls/tls.crt";
-            key_path = "/etc/sing-box/tls/tls.key";
+            certificate_path = "/etc/sing-box/tls.crt";
+            key_path = "/etc/sing-box/tls.key";
             alpn = [
               "h3"
             ];
