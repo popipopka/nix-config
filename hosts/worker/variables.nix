@@ -17,6 +17,7 @@
     enabled = false;
 
     connectAddr = "singbox-vk-turn.singbox.svc.cluster.local:4443";
+    obfKey = "OBF_KEY";
   };
 
   singbox.enabled = false;
