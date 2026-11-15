@@ -13,7 +13,6 @@
       template = {
         metadata.labels.app = "vk-turn-proxy";
         spec = {
-          nodeSelector."kubernetes.io/hostname" = "worker";
           containers = [
             {
               name = "vk-turn-proxy";
