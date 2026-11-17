@@ -27,6 +27,11 @@
     };
   };
 
+  vaultwarden = {
+    enabled = false;
+    domain = "DOMAIN_NAME";
+  };
+
   vkTurnProxy = {
     enabled = false;
     connectAddr = "singbox-vk-turn.singbox.svc.cluster.local:4443";

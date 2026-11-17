@@ -12,7 +12,6 @@
     enable = true;
     role = "server";
     disable = [
-      "local-storage"
       "metrics-server"
     ];
     extraFlags = [

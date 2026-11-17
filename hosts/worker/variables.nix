@@ -20,5 +20,10 @@
     obfKey = "OBF_KEY";
   };
 
+  vaultwarden = {
+    enabled = false;
+    domain = "DOMAIN_NAME";
+  };
+
   singbox.enabled = false;
 }
